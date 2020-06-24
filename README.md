@@ -5,20 +5,16 @@ La Buhardilla es un e-commerce para la venta de productos de decoración. El pro
 
 ## INTEGRANTES DEL GRUPO
 
-
 ### Juan Ignacio Cardozo
--
--
-_Tecnico informatico y futuro desarrollador de paginas web. De Jose C. Paz para el mundo. Fanantico de Boca y de las buenas peliculas._
+
+- _Tecnico informatico y futuro desarrollador de paginas web. De Jose C. Paz para el mundo. Fanantico de Boca y de las buenas peliculas._
 
 ### Bryan leonel Ronzano
--
--
-_Administrativo contable en marca de ropa femenina y futuro programador._
+
+- _Administrativo contable en marca de ropa femenina y futuro programador._
 
 
 ### Laura Marifil
--
 -
 
 ## SITIOS DE REFERENCIA
@@ -32,8 +28,10 @@ De este sitio tomamos como referencia el Home, ya que nos pareció muy atractiva
 https://www.falabella.com.ar/falabella-ar/
 Es una de las tiendas mas importantes del pais con una tematica similar a la de nuestro sitio, la tenemos como referencia para ver su manejo con los productos.
 
-https://www.mercadolibre.com.ar/  ; Este sitio lo tomamos como punto de partida para ubicar los principales botones clickeables , logrando así una página agradable y fácil de navegar para el usuario. También nos pareció muy buena  la manera en que muestran el detalle de los productos.
+https://www.mercadolibre.com.ar/  
+Este sitio lo tomamos como punto de partida para ubicar los principales botones clickeables , logrando así una página agradable y fácil de navegar para el usuario. También nos pareció muy buena  la manera en que muestran el detalle de los productos.
 
-https://www.muaa.com.ar/ ; El inicio/home de éste sitio tiene aspectos ,en su estructura y diseño, similares a lo que queremos lograr para nuestro cliente.
+https://www.muaa.com.ar/ 
+El inicio/home de éste sitio tiene aspectos ,en su estructura y diseño, similares a lo que queremos lograr para nuestro cliente.
 
 
