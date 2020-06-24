@@ -7,10 +7,10 @@ INTEGRANTES DEL GRUPO
 
 Juan Ignacio Cardozo
 
-Tecnico informatico y futuro desarrolador de paginas web. De Jose C. Paz para el mundo. Fanantico de Boca y de las buenas peliculas
+Tecnico informatico y futuro desarrollador de paginas web. De Jose C. Paz para el mundo. Fanantico de Boca y de las buenas peliculas
 
 Bryan leonel Ronzano
--
+Administrativo contable en marca de ropa femenina y futuro programador.
 -
 
 Laura Marifil
