@@ -28,5 +28,6 @@ De este sitio tomamos como referencia el Home, ya que nos pareció muy atractiva
 https://www.falabella.com.ar/falabella-ar/
 Es una de las tiendas mas importantes del pais con una tematica similar a la de nuestro sitio, la tenemos como referencia para ver su manejo con los productos.
 
+https://www.mercadolibre.com.ar/  ; Este sitio lo tomamos como punto de partida para ubicar los principales botones clickeables , logrando así una página agradable y fácil de navegar para el usuario. 
 
 
