@@ -15,7 +15,8 @@ La Buhardilla es un e-commerce para la venta de productos de decoración. El pro
 
 
 ### Laura Marifil
--
+
+- _Traductora de inglés, trabajo freelance hace más de 10 años y estoy aprendiendo programación para sumar herramientas a mi trabajo._
 
 ## SITIOS DE REFERENCIA
 
