@@ -30,9 +30,16 @@ https://www.falabella.com.ar/falabella-ar/
 Es una de las tiendas mas importantes del pais con una tematica similar a la de nuestro sitio, la tenemos como referencia para ver su manejo con los productos.
 
 https://www.mercadolibre.com.ar/  
-Este sitio lo tomamos como punto de partida para ubicar los principales botones clickeables , logrando así una página agradable y fácil de navegar para el usuario. También nos pareció muy buena  la manera en que muestran el detalle de los productos.
+Este sitio lo tomamos como punto de partida para ubicar los principales botones clickeables, logrando así una página agradable y fácil de navegar para el usuario. También nos pareció muy buena la manera en que muestran el detalle de los productos.
 
 https://www.muaa.com.ar/ 
-El inicio/home de éste sitio tiene aspectos ,en su estructura y diseño, similares a lo que queremos lograr para nuestro cliente.
+El inicio/home de éste sitio tiene aspectos, en su estructura y diseño, similares a lo que queremos lograr para nuestro cliente.
 
 
+
+
+## TABLERO DE TRABAJO:
+
+_Para nuestro proyecto, elegimos la plataforma de Trello para organizar las tareas._
+
+https://trello.com/b/KU1AHIfx/proyecto-integrador 
