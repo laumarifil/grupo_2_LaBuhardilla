@@ -1,0 +1,153 @@
+/* ==================
+- VARIABLES
+================== */
+
+:root {
+    --color-crudo:#FBEEEB;
+  }
+  
+  /* ==================
+  - IMPORTS
+  ================== */
+  
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap');
+  
+  /* ==================
+  - GENERAL
+  ================== */
+  
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding: 1px;
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+  
+  
+  
+  /* ==================
+  - HEADER
+  ================== */
+  
+  header {
+    background-color: var(--color-crudo);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    
+    padding: 10px;
+  }
+  
+  a {
+    color: #BFC9CA;
+  }
+  
+  /* ==================
+  - SIDEBAR
+  ================== */
+  /* The sidebar menu */
+  header .sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: rgba(253, 197, 155, 0.9);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The sidebar links */
+  header .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgba(252, 158, 89);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  header .sidebar a:hover {
+    color: rgba(254, 111, 69);
+  }
+  
+  /* Position and style the close button (top right corner) */
+  header .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* The button used to open the sidebar */
+  header .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color:rgba(255,255,255,0.5);
+    color: black;
+    padding: 1px 1px;
+    border: none;
+  }
+  
+  header .openbtn:hover {
+    background-color: rgba(250, 203, 169, 0.5);
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+  
+  /* ==================
+  - ESTILOS PROPIOS
+  ================== */
+  
+  /* Barra de búsqueda */
+  header .busqueda {
+    height: 40px;
+    border: 1px solid  rgba(250, 203, 169, 0.5);
+    background-color: white;
+    border-radius: auto;
+    padding: 0 8px;
+    align-self: center;
+  }
+  header form input[type='text'] {
+    height: 34px;
+    background: none;
+    border: 0;
+    color: rgba(252, 158, 89, 0.5);
+  }
+  header form input[type='text']:focus {
+    outline: none;
+  }
+  header form button {
+    background: none;
+    border: 0;
+    border-left: 2px solid rgba(250, 203, 169, 0.5);
+    color: rgba(250, 203, 169, 0.5);
+  }
+  
+  header .usuario{
+    align-self: center;
+  }
+  header ul li{
+    color:  rgba(252, 158, 89, 0.5);
+  }
+  header ul li:hover{
+    color:  rgba(254, 111, 69);
+  }
