@@ -1,0 +1,80 @@
+header{
+    height: 30vh;
+}
+
+
+.especificaciones
+{
+    text-align: center;
+    margin-top: 3%;
+}
+
+.datosPrincipales{
+    text-align: center;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.imagenSecundaria{
+    height: 80%;
+    width: 100%;    
+}
+
+.fila2{
+    margin-top: 5%;
+}
+
+.mediosPago{
+    width: 80%;
+}
+
+.precio{
+    display: inline;
+}
+
+.imagenPrincipal{
+    height: 100%;
+    width: 100%;
+}
+
+.imagenesSecundarias{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 100%;
+}
+
+.imagenesSecundarias img
+{
+    width: 100%;
+    height: 33%;
+}
+
+.imagenes
+{
+    height: 70vh;
+    width: 100%;
+}
+
+.contenedorImagenes{
+    height: 100%;
+}
+
+.articulosTambien{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.tambien
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 3%;
+}

@@ -1,0 +1,28 @@
+h1{
+    text-align: center;
+}
+
+body{
+    background-color:white;
+}
+
+.totalCompras{
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+.sumaSubtotal{
+    text-align: center;
+}
+
+.productoCarrito{
+    margin-bottom: 1%;
+}
+
+.adicionales{
+    text-align: left;
+}
+
+.productosCarrito{
+    margin: 0 auto;
+}
