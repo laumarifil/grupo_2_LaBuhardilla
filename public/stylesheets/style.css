@@ -16,16 +16,6 @@
   - GENERAL
   ================== */
   
-  * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    padding: 1px;
-    font-family: 'Open Sans Condensed', sans-serif;
-  }
-  
   
   
   /* ==================
@@ -38,11 +28,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
-    
-    padding: 10px;
+
+    /*padding: 10px;*/
   }
   
-  a {
+ header a {
     color: #BFC9CA;
   }
   

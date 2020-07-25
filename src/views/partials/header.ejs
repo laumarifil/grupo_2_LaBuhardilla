@@ -1,0 +1,29 @@
+  <header>
+
+    <div class="container d-flex justify-content-between">
+      <!-- Collapsed Sidebar -->
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/">Home</a>
+        <a href="/products">Productos</a>
+        <a href="/users">Usuarios</a>
+      </div>
+
+      <div id="main">       
+        <button class="openbtn" onclick="openNav()">&#9776; <a href="" class="logo"><img height="100" width="150" src="/images/logo-la-buhardilla.jpeg" alt=""></a></button>       
+      </div>
+
+      <!-- Search bar -->        
+      <form action="" class="busqueda">
+        <input type="text" placeholder="¿Qué buscás?">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+      
+      <!-- Login/Cart -->
+      <ul class="usuario" type="none">
+        <li><a href="/users/registration"><i class="far fa-user"></i> Iniciar sesión</a></li>
+        <li><a href="/users/carrito"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+      </ul>
+    </div>
+
+  </header>

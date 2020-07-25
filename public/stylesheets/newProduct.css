@@ -1,13 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-  margin: 0;
-  font-size: 10px;
-}
-
 .products-title {
   margin-left: 15px;
   
@@ -61,7 +51,7 @@ textarea.form-input {
   width: -webkit-fill-available;
 }
 
-label {
+.products-wrapper label {
   margin-left: 15px;
 }
 

@@ -1,22 +1,44 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<head>
+  <head>
 
+    <%- include("./partials/head")%>
 
-</head>
-
-<body>
+  </head>
+  
+  <body>
+    
+    <%- include("./partials/header")%>
 
     <h1>Listado de productos</h1>
 
-    <a href="/products/detailProduct">Detalle de Producto</a>
     <br>
     <a href="/products/newProduct">Alta de Producto</a>
     <br>
+    <a href="/">Ir a la HOME</a>
+    <br>
     <a href="javascript:history.back()"> Volver Atrás</a>
 
+    <% for(let i = 0; i < producto.length; i++){ %>
+        <section>
 
-</body>
+            <article class="imagen">
+                <img>
+            </article>
+            <article>
+                <h3> <%= producto[i].name %> </h3>
+                <h5> <%= producto[i].price %> </h5>
 
+            </article>
+            <a href="/products/detailProduct/<%= i %>">Detalle Producto</a>
+        </section>
+    <% } %>
+
+    <%- include("./partials/footer")%>
+
+    <%- include("./partials/scripts")%>
+
+  </body>
 
 </html>

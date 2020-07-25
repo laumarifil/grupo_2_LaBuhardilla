@@ -1,92 +1,99 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/styleDetailProduct.css">
-    <link rel="stylesheet" href="/stylesheets/footer.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+    <head>
 
-<body>
+        <%- include("./partials/head")%>
+    
+    </head>
 
-    <%- include("./partials/head")%>
+    <body>
 
-    <div class="container">
-        <div class="row">
+        <%- include("./partials/header")%>
 
-            <section class="col-12 col-md-6 imagenes">
-                <article class="row contenedorImagenes" >
-                    <div class="col-3 imagenesSecundarias">
-                        <img class="img-thumbnail" src="/images/producto1.jpg">
-                        <img class="img-thumbnail" src="/images/producto1.jpg">
-                        <img class="img-thumbnail" src="/images/producto1.jpg">
+        <div class="container">
+            <div class="row">
+
+                <section class="col-12 col-md-6 imagenes">
+                    <article class="row contenedorImagenes" >
+                        <div class="col-3 imagenesSecundarias">
+                            <img class="img-thumbnail" src="/images/producto1.jpg">
+                            <img class="img-thumbnail" src="/images/producto1.jpg">
+                            <img class="img-thumbnail" src="/images/producto1.jpg">
+                        </div>
+                        <img class="col-9 imagenPrincipal img-thumbnail" src="/images/producto1.jpg">
+                    </article>
+                </section>
+            
+                <form method="GET" action="" class="col-12 col-md-6 datosPrincipales">
+                    <h1><%= producto.name %></h1>
+                    <h2 class="precio">$ <%= producto.price %></h2>
+                    <div >
+                        <img class="mediosPago img-fluid" src="/images/FormasPago.jpg">
                     </div>
-                    <img class="col-9 imagenPrincipal img-thumbnail" src="/images/producto1.jpg">
-                </article>
-            </section>
-        
-            <form method="GET" action="comprar.html" class="col-12 col-md-6 datosPrincipales">
-                <h1>Titulo Producto</h1>
-                <h2 class="precio">$ Precio</h2>
-                <div >
-                    <img class="mediosPago img-fluid" src="/images/FormasPago.jpg">
-                </div>
-                <div class="envio">
-                    <label for="codigoPostal">Codigo Postal</label>
-                    <input class="col-2" type="text">
-                    <button class="btn btn-success" type="button">Calcular envio</button>
-                </div>
-                <div class="cant">
-                    <label for="cantidad">Cantidad</label>
-                    <input class="col-2" type="number" min="1" value="1">
-                </div>
-                <div class="botones">
-                    <button class="btn btn-success" type="submit">Comprar</button>
-                    <button class="btn btn-success" type="button">Agregar al carrito</button>
-                </div>
-            </form>
+                    <div class="envio">
+                        <label for="codigoPostal">Codigo Postal:</label>
+                        <input class="col-2" type="text">
+                        <button class="btn btn-success" type="button">Calcular envio</button>
+                    </div>
+                    <div class="cant">
+                        <label for="stock">Cantidad:</label>
+                        <input class="col-2" type="number" min="1" value="1" max="<%= producto.stock %>" name="stock">
+                    </div>
+                    <div>
+                        <label for="category">Categoria: </label>
+                        <label><%= producto.category %></label>
+                    </div>
+                    <div>
+                        <label for="color">Color: </label>
+                        <label><%= producto.color %></label>
+                    </div>
+                    <div class="botones">
+                        <button class="btn btn-success" type="submit">Comprar</button>
+                        <button class="btn btn-success" type="button">Agregar al carrito</button>
+                    </div>
+                </form>
 
-        </div>
+            </div>
 
-        <div class="row fila2">
+            <div class="row fila2">
 
-            <section class="col-12 col-md-6 especificaciones">
-                <label>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste maiores repellat perspiciatis temporibus labore obcaecati sed aperiam reiciendis, ab laborum inventore vero hic, magni reprehenderit.</label>
-            </section>
+                <section class="col-12 col-md-6 especificaciones">
+                    <h5><%= producto.description %></h5>
+                    <a href="/products/editProduct/<%= producto.id - 1 %>">Editar Producto</a>
+                    <br>
+                    <a href="/products/deleteProduct/<%= producto.id - 1 %>">Eliminar Producto</a>
+                </section>
 
-            <section class="col-12 col-md-6 tambien">
-                <h4>Tambien podria interesarte</h4>
+                <section class="col-12 col-md-6 tambien">
+                    <h4>Tambien podria interesarte</h4>
 
-                <article class="row articulosTambien">
-                
-                    <article class="col-6">
-                        <img class="imagenSecundaria img-thumbnail" src="/images/producto2.jpg">
-                        <h5>Titulo</h5>
-                        <h6>Precio</h6>
+                    <article class="row articulosTambien">
+                    
+                        <article class="col-6">
+                            <img class="imagenSecundaria img-thumbnail" src="/images/producto2.jpg">
+                            <h5>Titulo</h5>
+                            <h6>Precio</h6>
+                        </article>
+
+                        <article class="col-6">
+                            <img class="imagenSecundaria img-thumbnail" src="/images/producto2.jpg">
+                            <h5>Titulo</h5>
+                            <h6>Precio</h6>
+                        </article>
+
                     </article>
 
-                    <article class="col-6">
-                        <img class="imagenSecundaria img-thumbnail" src="/images/producto2.jpg">
-                        <h5>Titulo</h5>
-                        <h6>Precio</h6>
-                    </article>
+                </section>
 
-                </article>
+            </div>
 
-            </section>
+        </div>    
 
-        </div>
+        <%- include("./partials/footer")%>
 
+        <%- include("./partials/scripts")%>
 
+    </body>
 
-
-    </div>    
-
-    <%- include("./partials/footer")%> 
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="/javascripts/jsfront.js"></script>
-</body>
+</html>
