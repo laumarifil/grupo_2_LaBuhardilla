@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productsController = require('../controllers/productsController');
+const authMiddleware = require('../middlewares/authMiddleware');
 const multer = require('multer');
 const path = require('path');
 
@@ -21,18 +22,18 @@ router.get('/', productsController.products);
 router.get('/detailProduct/:idProducto', productsController.detailProduct);
 
 /* Alta de productos */
-router.get('/newProduct', productsController.newProduct);
-router.post('/newProduct', upload.any(), productsController.createProduct);
-router.get('/productOK', productsController.newProductOK);
+router.get('/newProduct', authMiddleware , productsController.newProduct);
+router.post('/newProduct', authMiddleware , upload.any(), productsController.createProduct);
+router.get('/productOK', productsController.newProductOK); 
 
 /* Modificacion de productos */
-router.get('/editProduct/:idProducto', productsController.editProduct);
-router.put('/editProduct/:idProducto', productsController.modifyProduct);
+router.get('/editProduct/:idProducto', authMiddleware , productsController.editProduct);
+router.put('/editProduct/:idProducto', authMiddleware , productsController.modifyProduct);
 router.get('/productEditOK', productsController.editProductOK);
 
 /* Baja de productos */
-router.get('/deleteProduct/:idProducto', productsController.confirmDeleteProduct);
-router.delete('/deleteProduct/:idProducto', productsController.deleteProduct);
+router.get('/deleteProduct/:idProducto',authMiddleware, productsController.confirmDeleteProduct);
+router.delete('/deleteProduct/:idProducto', authMiddleware ,productsController.deleteProduct);
 router.get('/productDeleteOK', productsController.deleteProductOK);
 
 module.exports = router;
