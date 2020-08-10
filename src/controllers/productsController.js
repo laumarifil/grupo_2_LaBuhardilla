@@ -28,7 +28,7 @@ const productsController =
     newProduct: function(req,res){
         res.render('newProduct')
     },
-    createProduct: function(req,res){
+    createProduct: function(req,res, next){
 
         productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
@@ -41,7 +41,7 @@ const productsController =
             price: req.body.price,
             category: req.body.category,
             color: req.body.color,
-            image: 'imagenPrueba',
+            image: req.files[0].filename,
             description: req.body.description,
             stock: req.body.stock
         }

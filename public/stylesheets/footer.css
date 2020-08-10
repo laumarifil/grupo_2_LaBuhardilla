@@ -20,16 +20,23 @@ div.news{
 button , input {    
     border-radius: 8px;
     border: solid 1px black;
+    padding-left: 20px;
 }
 
 ul li a {
     margin-top: -1em;
     margin-bottom: 0em;
+    color: var(--color-verde-claro);
 }
 
 footer img {
     border-radius: 7px;
 }
+
+footer p {
+    color: var(--color-verde-oscuro);
+}
+
 
 .logofooter {
     display: flex;

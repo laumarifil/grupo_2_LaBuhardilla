@@ -4,6 +4,8 @@
 
 :root {
     --color-crudo:#FBEEEB;
+    --color-verde-claro: #77cc8a;
+    --color-verde-oscuro: #077a21;
   }
   
   /* ==================
@@ -33,7 +35,7 @@
   }
   
  header a {
-    color: #BFC9CA;
+    color: var(--color-verde-claro);
   }
   
   /* ==================
