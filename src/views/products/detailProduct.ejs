@@ -3,25 +3,20 @@
 
     <head>
 
-        <%- include("./partials/head")%>
+        <%- include("../partials/head")%>
     
     </head>
 
     <body>
 
-        <%- include("./partials/header")%>
+        <%- include("../partials/header")%>
 
         <div class="container">
             <div class="row">
 
                 <section class="col-12 col-md-6 imagenes">
                     <article class="row contenedorImagenes" >
-                        <div class="col-3 imagenesSecundarias">
-                            <img class="img-thumbnail" src="/images/producto1.jpg">
-                            <img class="img-thumbnail" src="/images/producto1.jpg">
-                            <img class="img-thumbnail" src="/images/producto1.jpg">
-                        </div>
-                        <img class="col-9 imagenPrincipal img-thumbnail" src="/images/producto1.jpg">
+                        <img class="col-9 imagenPrincipal img-thumbnail" src="/images/products/<%= producto.image %>">
                     </article>
                 </section>
             
@@ -60,9 +55,11 @@
 
                 <section class="col-12 col-md-6 especificaciones">
                     <h5><%= producto.description %></h5>
-                    <a href="/products/editProduct/<%= producto.id - 1 %>">Editar Producto</a>
+                    <a href="/products/editProduct/<%= producto.id %>">Editar Producto</a>
                     <br>
-                    <a href="/products/deleteProduct/<%= producto.id - 1 %>">Eliminar Producto</a>
+                    <a href="/products/deleteProduct/<%= producto.id %>">Eliminar Producto</a>
+                    <br>
+                    <a href="/products">Ir a la lista de productos</a>
                 </section>
 
                 <section class="col-12 col-md-6 tambien">
@@ -90,9 +87,9 @@
 
         </div>    
 
-        <%- include("./partials/footer")%>
+        <%- include("../partials/footer")%>
 
-        <%- include("./partials/scripts")%>
+        <%- include("../partials/scripts")%>
 
     </body>
 

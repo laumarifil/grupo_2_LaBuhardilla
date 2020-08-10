@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <%- include("../partials/head")%>
+
+  </head>
+  
+  <body>
+    
+    <%- include("../partials/header")%>
+
+    <form action="/products/deleteProduct/<%= producto.id %>?_method=DELETE" method="POST">
+        <h1>Desea eliminar el producto: </h1>
+
+        <h2><%= producto.name%></h2>
+        <h3>Cuyo precio es: <%= producto.price %></h3>
+        
+
+        <input type="submit" value="SI">
+        <input type="button" value="NO" onClick="history.go(-1);">
+    </form>
+
+    <%- include("../partials/footer")%>
+
+    <%- include("../partials/scripts")%>
+
+  </body>
+
+</html>

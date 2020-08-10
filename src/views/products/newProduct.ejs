@@ -2,12 +2,12 @@
 <html lang="en">
     <head>
 
-        <%- include("./partials/head")%>
+        <%- include("../partials/head")%>
 
     </head>
     <body>
 
-        <%- include("./partials/header")%>
+        <%- include("../partials/header")%>
         
         <section class="container">
             <div class="row">
@@ -55,6 +55,7 @@
                             </form>
                             <div class="col-12" class="botonGuardar">
                                 <button type="submit" class="buy-now-button">Guardar producto</button>
+                                <button type="button" class="buy-now-button" onClick="history.go(-1);">Cancelar</button>
                             </div>
                         </div>
                     </form>
@@ -62,9 +63,9 @@
             </div>
         </section>
         
-        <%- include("./partials/footer")%>
+        <%- include("../partials/footer")%>
 
-        <%- include("./partials/scripts")%>
+        <%- include("../partials/scripts")%>
 
     </body>
 

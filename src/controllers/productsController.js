@@ -3,8 +3,15 @@ const path = require('path');
 
 let productos;
 
-
-
+let ultimoID = function(array) {
+	let contador = array[0].id;
+	for(let i = 0; i < array.length; i++) {
+		if(array[i].id > contador) {
+			contador = array[i].id;
+		}
+	}
+	return contador
+}
 
 const productsController =
 {
@@ -12,7 +19,7 @@ const productsController =
         productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
-        res.render('products', {producto: productos });
+        res.render('products/products', {producto: productos });
     },
     detailProduct: function(req,res){
 
@@ -23,20 +30,26 @@ const productsController =
         console.log('ID PRODUCTO ' + req.params.idProducto);
         console.log(productos);
         console.log(productos[req.params.idProducto])
-        res.render('detailProduct', {producto: productos[req.params.idProducto]})
+
+        for(let i = 0; i < productos.length; i++) {
+			if(productos[i].id == req.params.idProducto) {
+				return res.render('products/detailProduct', {producto: productos[i]});
+            }
+        }
+        res.send('No encontramos un producto con esas características');
+        
+        //res.render('products/detailProduct', {producto: productos[req.params.idProducto]})
     },
     newProduct: function(req,res){
-        res.render('newProduct')
+        res.render('products/newProduct')
     },
     createProduct: function(req,res, next){
 
         productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
-        let ultimoID = productos.length
-
         let nuevoProducto = {
-            id: ultimoID + 1,
+            id: ultimoID(productos) + 1,
             name: req.body.name,
             price: req.body.price,
             category: req.body.category,
@@ -51,20 +64,13 @@ const productsController =
 
         fs.writeFileSync(path.join(__dirname, '../data/products.json'), productos);
 
-        return res.redirect('productOK');
+        res.redirect('/products/productOK');
     },
     newProductOK: function(req,res){
-        res.render('productOK');
+        res.render('products/productOK');
     },
     editProduct: function(req,res){
 
-        /*for(let i = 0; i < productos.length; i++) {
-			if(productos[i].id == req.params.idProducto) {
-				return res.render('editProduct', {
-					producto: productos[i]
-				});
-			}
-        }*/
         productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
@@ -72,8 +78,14 @@ const productsController =
         console.log(req.params.idProducto);
         console.log(productos[req.params.idProducto]);
 
-        res.render('editProduct', {producto: productos[req.params.idProducto]});
-		//res.send('Ese ID no capo');
+        for(let i = 0; i < productos.length; i++) {
+			if(productos[i].id == req.params.idProducto) {
+				return res.render('products/editProduct', {producto: productos[i]});
+			}
+		}
+		res.send('No encontramos un producto con esas características');
+
+        //res.render('products/editProduct', {producto: productos[req.params.idProducto]});
     },
     modifyProduct: function(req,res){
 
@@ -85,32 +97,43 @@ const productsController =
         console.log(req.params.idProducto);
         console.log(req.body);
         //productos[req.params.idProducto - 1].id = Number.parseInt(req.body.idProducto);
-        productos[req.params.idProducto].name = req.body.name;
-        productos[req.params.idProducto].price = req.body.price;
-        productos[req.params.idProducto].category = req.body.category;
-        productos[req.params.idProducto].color = req.body.color;
-        productos[req.params.idProducto].image = 'imagenPrueba';
-        productos[req.params.idProducto].description = req.body.description;
-        productos[req.params.idProducto].stock = req.body.stock;
 
-        //productos[req.params.idProducto - 1] = req.body;
-        console.log(productos[req.params.idProducto]);
+		for(let i = 0; i < productos.length; i++) {
+			if(productos[i].id == req.params.idProducto) {
+                
+                productos[i].name = req.body.name;
+                productos[i].price = req.body.price;
+                productos[i].category = req.body.category;
+                productos[i].color = req.body.color;
+                productos[i].description = req.body.description;
+                productos[i].stock = req.body.stock;
+        
+                //productos[req.params.idProducto - 1] = req.body;
+                //console.log(productos[req.params.idProducto]);
+        
+                productos = JSON.stringify(productos);
+                fs.writeFileSync(path.join(__dirname, '../data/products.json'), productos);
+        
+                return res.redirect('/products/productEditOK');
+			}
+		}
+		res.send('No encontramos un producto con esas características');
 
-        productos = JSON.stringify(productos);
-
-        fs.writeFileSync(path.join(__dirname, '../data/products.json'), productos);
-
-        res.redirect('/products/productEditOK');
     },
     editProductOK: function(req,res){
-        res.render('productEditOK');
+        res.render('products/productEditOK');
     },
     confirmDeleteProduct: function(req,res){
 
         productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
-        res.render('deleteProduct', {producto: productos[req.params.idProducto]});
+        for(let i = 0; i < productos.length; i++) {
+			if(productos[i].id == req.params.idProducto) {
+                res.render('products/deleteProduct', {producto: productos[i]});
+			}
+		}
+		res.send('No encontramos un producto con esas características');
     },
     deleteProduct: function(req,res){
 
@@ -122,15 +145,20 @@ const productsController =
         console.log(req.params.idProducto);
         console.log(req.body);
 
-        productos.splice(req.params.idProducto,1);
+        for(let i = 0; i < productos.length; i++) {
+			if(productos[i].id == req.params.idProducto) {
+                productos.splice(i,1);
 
-        productos = JSON.stringify(productos);
-        fs.writeFileSync(path.join(__dirname, '../data/products.json'), productos);
-
-        res.redirect('/products/productDeleteOK');
+                productos = JSON.stringify(productos);
+                fs.writeFileSync(path.join(__dirname, '../data/products.json'), productos);
+        
+                return res.redirect('/products/productDeleteOK');
+			}
+		}
+		res.send('No encontramos un producto con esas características');
     },
     deleteProductOK: function(req,res){
-        res.render('productDeleteOK');
+        res.render('products/productDeleteOK');
     }
 }
 

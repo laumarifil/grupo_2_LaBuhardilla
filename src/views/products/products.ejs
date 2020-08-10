@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <%- include("../partials/head")%>
+  
+</head>
+
+<body>
+  
+  <%- include("../partials/header")%>    
+  
+  <div class="container">
+    <div class="row productos">
+      <div class="col-12">
+      <h3>Listado de productos</h3>
+      <br>      
+      <a href="/products/newProduct"><button type="button" class="btn btn-success">Alta de Producto</button></a><br><br>
+      </div>
+      
+      <% for(let i = 0; i < producto.length; i++){ %>
+        <section class="col-4">
+          <article class="productContainer">
+            <div class="imgProductContainer">
+              <img src="images/products/<%= producto[i].image %>" class="img-thumbnail" alt="">
+            </div>
+            <h4> <%= producto[i].name %> </h4>
+            <h5> $ <%= producto[i].price %> </h5>            
+          </article>
+          <a href="/products/detailProduct/<%= producto[i].id %>"><button type="button" class="btn btn-outline-success btn-sm">Detalle Producto</button></a>
+        </section>               
+      <% } %>
+        
+      </div>
+    </div>
+
+    <%- include("../partials/footer")%>
+    
+    <%- include("../partials/scripts")%>
+    
+  </body>
+  
+  </html>

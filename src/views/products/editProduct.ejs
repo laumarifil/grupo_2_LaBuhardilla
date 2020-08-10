@@ -3,13 +3,13 @@
 
   <head>
 
-    <%- include("./partials/head")%>
+    <%- include("../partials/head")%>
 
   </head>
   
   <body>
     
-    <%- include("./partials/header")%>
+    <%- include("../partials/header")%>
 
     <section>
         <div class="container products-wrapper">
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <form action="/products/editProduct/<%= producto.id - 1 %>?_method=PUT" method="POST">
+                <form action="/products/editProduct/<%= producto.id %>?_method=PUT" method="POST">
                     <div class="row product-detail">
                         <div class="col-12 col-md-6">
                             <label for="name" class="form-label">Nombre del producto:</label>
@@ -59,6 +59,7 @@
                         </form>
                         <div class="col-12" class="botonGuardar">
                             <button type="submit" class="buy-now-button">Editar producto</button>
+                            <button type="button" class="buy-now-button" onClick="history.go(-1);">Cancelar</button>
                         </div>
                     </div>
                 </form>
@@ -66,9 +67,9 @@
         </div>
     </section>
 
-    <%- include("./partials/footer")%>
+    <%- include("../partials/footer")%>
 
-    <%- include("./partials/scripts")%>
+    <%- include("../partials/scripts")%>
 
     </body>
 

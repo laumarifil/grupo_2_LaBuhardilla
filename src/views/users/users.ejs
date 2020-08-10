@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <%- include("../partials/head")%>
+
+  </head>
+  
+  <body>
+    
+    <%- include("../partials/header")%>
+
+    <h1>Listado de usuarios</h1>
+
+    <div class="container">
+      <div class="row">
+
+        <% for(let i = 0; i < usuario.length; i++){ %>
+          <section class="col-4">
+            <div class="imgUserContainer">
+              <img src="images/users/<%= usuario[i].image %>" class="img-thumbnail" alt="">
+            </div>
+            <h4> ID: <%= usuario[i].id %> </h4>
+            <h4> Nombre: <%= usuario[i].name %> </h4>
+            <h4> Apellido: <%= usuario[i].surname %> </h4>
+            <h5> Email: <%= usuario[i].email %> </h5>
+          </section>               
+        <% } %>
+
+      </div>
+    </div>
+
+    <a href="/users/carrito">Ir al carrito</a>
+    <br>
+    <a href="/users/registration">Registrate</a>
+
+    <%- include("../partials/footer")%>
+
+    <%- include("../partials/scripts")%>
+
+  </body>
+
+</html>
