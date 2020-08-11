@@ -6,6 +6,7 @@ const session = require('express-session');
 
 
 let usuarios;
+let imagenUsuario;
 
 let ultimoID = function(array) {
     let contador = array[0].id;
@@ -65,6 +66,12 @@ const usersController =
             usuarios = JSON.parse(usuarios);
             
             if(errors.isEmpty()) {
+
+                if (req.files.length == 0){
+                    imagenUsuario = 'default.png'
+                } else {
+                    imagenUsuario = req.files[0].filename
+                }
                                
                 let nuevoUsuario = {
                     id: ultimoID(usuarios) + 1,
@@ -72,7 +79,7 @@ const usersController =
                     surname: req.body.surname,
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
-                    image: req.files[0].filename,
+                    image: imagenUsuario,
                 }
                 
                 usuarios.push(nuevoUsuario);

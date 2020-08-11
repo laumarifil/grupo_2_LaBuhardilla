@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 let productos;
+let imagenProducto;
 
 let ultimoID = function(array) {
 	let contador = array[0].id;
@@ -48,13 +49,19 @@ const productsController =
         productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
+        if (req.files.length == 0){
+            imagenProducto = 'default.jpg'
+        } else {
+            imagenProducto = req.files[0].filename
+        }
+
         let nuevoProducto = {
             id: ultimoID(productos) + 1,
             name: req.body.name,
             price: req.body.price,
             category: req.body.category,
             color: req.body.color,
-            image: req.files[0].filename,
+            image: imagenProducto,
             description: req.body.description,
             stock: req.body.stock
         }
@@ -107,7 +114,9 @@ const productsController =
                 productos[i].color = req.body.color;
                 productos[i].description = req.body.description;
                 productos[i].stock = req.body.stock;
-                productos[i].image = req.files[0].filename,
+                if (req.files.length > 0){
+                    productos[i].image = req.files[0].filename
+                }
         
                 //productos[req.params.idProducto - 1] = req.body;
                 //console.log(productos[req.params.idProducto]);

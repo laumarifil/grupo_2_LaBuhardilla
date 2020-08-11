@@ -27,12 +27,12 @@ router.get('/', authMiddleware , usersController.listar);
 router.get('/carrito', authMiddleware , usersController.carrito);
 
 /* Alta de usuarios */
-router.get('/registration', usersController.registration);
-router.post('/registration', upload.any(), registerValidation , usersController.newUser);
-router.get('/userOK',  usersController.userOK);
+router.get('/registration', verifyLoginMiddleware, usersController.registration);
+router.post('/registration', upload.any(), registerValidation, usersController.newUser);
+router.get('/userOK', usersController.userOK);
 
 /* Login de usuarios */
-router.get('/login', verifyLoginMiddleware , usersController.login);
+router.get('/login', verifyLoginMiddleware, usersController.login);
 router.post('/login', usersController.processLogin);
 router.get('/logout', usersController.logOut);
 

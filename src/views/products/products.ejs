@@ -13,14 +13,15 @@
   
   <div class="container">
     <div class="row productos">
+      
       <div class="col-12">
-      <h3>Listado de productos</h3>
-      <br>      
-      <a href="/products/newProduct"><button type="button" class="btn btn-success">Alta de Producto</button></a><br><br>
+        <h3>Listado de productos</h3>
+        <br>      
+        <a href="/products/newProduct"><button type="button" class="btn btn-success">Alta de Producto</button></a><br><br>
       </div>
       
       <% for(let i = 0; i < producto.length; i++){ %>
-        <section class="col-4">
+        <section class="col-12 col-sm-6 col-md-4 col-lg-3">
           <article class="productContainer">
             <div class="imgProductContainer">
               <img src="images/products/<%= producto[i].image %>" class="img-thumbnail" alt="">
