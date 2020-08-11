@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 let { check, validationResult, body } = require('express-validator'); 
 const session = require('express-session');
 
+
 let usuarios;
 
 let ultimoID = function(array) {
@@ -56,23 +57,22 @@ const usersController =
             }
             )}
         },
-    newUser: function(req,res){
+    newUser: function(req,res, next){
+            
             let errors = validationResult(req);
             
             usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
             usuarios = JSON.parse(usuarios);
             
             if(errors.isEmpty()) {
-                
-                
-                
+                               
                 let nuevoUsuario = {
                     id: ultimoID(usuarios) + 1,
                     name: req.body.name,
                     surname: req.body.surname,
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
-                    image: 'default.png',
+                    image: req.files[0].filename,
                 }
                 
                 usuarios.push(nuevoUsuario);

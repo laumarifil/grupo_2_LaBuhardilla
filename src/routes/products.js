@@ -28,7 +28,7 @@ router.get('/productOK', productsController.newProductOK);
 
 /* Modificacion de productos */
 router.get('/editProduct/:idProducto', authMiddleware , productsController.editProduct);
-router.put('/editProduct/:idProducto', authMiddleware , productsController.modifyProduct);
+router.put('/editProduct/:idProducto', authMiddleware , upload.any(), productsController.modifyProduct);
 router.get('/productEditOK', productsController.editProductOK);
 
 /* Baja de productos */

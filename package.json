@@ -17,5 +17,18 @@
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
     "multer": "^1.4.2"
-  }
+  },
+  "description": "La Buhardilla es un e-commerce para la venta de productos de decoración. El proyecto surge como necesidad del cliente de pasar de un sitio generado a través de una plataforma de e-commerce a un sitio propio gestionado de manera particular. El sitio actual del cliente es http://www.labuhardilladecora.mitiendanube.com/. Como desarrolladores, vamos a reutilizar algunos elementos de este sitio, como logotipo, fotos y descripciones, pero vamos a crear un sitio completamente nuevo que sea más atractivo, teniendo en cuenta el público al cual va dirigido. Nuestro público sería principalmente femenino, pero también masculino, adultos, que buscan renovar la estética de sus hogares.",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laumarifil/grupo_2_LaBuhardilla.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laumarifil/grupo_2_LaBuhardilla/issues"
+  },
+  "homepage": "https://github.com/laumarifil/grupo_2_LaBuhardilla#readme"
 }

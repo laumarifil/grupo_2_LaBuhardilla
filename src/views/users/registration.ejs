@@ -19,7 +19,7 @@
                     <h3>Crear cuenta</h3>
                     
                     
-                    <form action="/users/registration" method="POST">
+                    <form action="/users/registration" method="POST" enctype="multipart/form-data">
 
                         <input type="text" placeholder="Nombre" class="nombre" name="name" value="<%= (typeof old != 'undefined' && !errors.name) ? old.name : '' %>">
                         <small class="text-danger"><%= (typeof errors != 'undefined' && errors.name) ? errors.name.msg : '' %></small>
@@ -36,7 +36,7 @@
                         <input type="password" placeholder="Confirma contraseña" class="repass" name="repassword">
                         <small class="text-danger"><%= (typeof errors != 'undefined' && errors.repassword) ? errors.repassword.msg : '' %></small>
 
-                        <input type="file" placeholder="Nombre" class="nombre" name="image">
+                        <input type="file" class="nombre" name="image">
                         <input type="submit" class="submit" value="REGISTRARSE">
                         <a href="/users/login">¿ya tenés cuenta?</a>
 

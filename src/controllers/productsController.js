@@ -87,7 +87,7 @@ const productsController =
 
         //res.render('products/editProduct', {producto: productos[req.params.idProducto]});
     },
-    modifyProduct: function(req,res){
+    modifyProduct: function(req,res, next){
 
         productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
@@ -107,6 +107,7 @@ const productsController =
                 productos[i].color = req.body.color;
                 productos[i].description = req.body.description;
                 productos[i].stock = req.body.stock;
+                productos[i].image = req.files[0].filename,
         
                 //productos[req.params.idProducto - 1] = req.body;
                 //console.log(productos[req.params.idProducto]);
