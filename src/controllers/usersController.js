@@ -44,10 +44,10 @@ const usersController =
             
             for(let i = 0 ; i<usuarios.length; i++){
                 if(usuarios[i].email == req.body.email && bcrypt.compareSync(req.body.loginPassword, usuarios[i].password)) {                   
-                    req.session.logueado = usuarios[i].email;
+                    req.session.logueado = usuarios[i].email ;
                     
                     if(req.body.remember){
-                        res.cookie('userCookie', usuarios[i].email , {maxAge:1000 * 60 * 2 })
+                        res.cookie('userCookie', usuarios[i].email , { maxAge: 60000 * 60 * 24 })
                     }
 
 
