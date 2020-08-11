@@ -2,8 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 let { check, validationResult, body } = require('express-validator'); 
-const session = require('express-session');
-
 
 let usuarios;
 let imagenUsuario;
@@ -36,16 +34,24 @@ const usersController =
         res.render('users/login');
     },
     processLogin: function(req, res){
+        
         let errors = validationResult(req);
         
-        let  usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
-        usuarios = JSON.parse(usuarios)
+        usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
+        usuarios = JSON.parse(usuarios);
         
         if(errors.isEmpty()){         
             
             for(let i = 0 ; i<usuarios.length; i++){
                 if(usuarios[i].email == req.body.email && bcrypt.compareSync(req.body.loginPassword, usuarios[i].password)) {                   
-                    req.session.logueado = usuarios[i].id
+                    req.session.logueado = usuarios[i].email;
+                    
+                    if(req.body.remember){
+                        res.cookie('userCookie', usuarios[i].email , {maxAge:1000 * 60 * 2 })
+                    }
+
+
+
                     return res.redirect('/');
                 }
             }
@@ -103,6 +109,7 @@ const usersController =
         },
         logOut: function(req, res){
             req.session.destroy();
+            res.cookie('userCookie','', {maxAge: -1})
             res.redirect('/');
         }
     }
