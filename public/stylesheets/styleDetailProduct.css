@@ -6,7 +6,7 @@
 
 .datosPrincipales{
     text-align: center;
-    height: 70vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -17,12 +17,17 @@
     width: 100%;    
 }
 
+.fila1{
+    height: 80vh;
+    padding-bottom: 1%;
+}
+
 .fila2{
-    margin-top: 5%;
+    padding-top: 0%;
 }
 
 .mediosPago{
-    width: 80%;
+    max-width: 60%;
 }
 
 .precio{
@@ -32,6 +37,8 @@
 .imagenPrincipal{
     height: 100%;
     width: 100%;
+    max-width: 50vw;
+    max-height: 80vh;
 }
 
 .imagenesSecundarias{
@@ -51,12 +58,8 @@
 
 .imagenes
 {
-    height: 70vh;
     width: 100%;
-}
-
-.contenedorImagenes{
-    height: 100%;
+    padding-top: 1%;
 }
 
 .articulosTambien{
@@ -72,4 +75,12 @@
     flex-direction: column;
     justify-content: space-around;
     margin-top: 3%;
+}
+
+.articulosTambien a{
+    display: contents;
+}
+
+.articuloTambien{
+    text-align: center;
 }

@@ -20,6 +20,7 @@ const productsController =
         productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
+        console.log(productos);
         res.render('products/products', {producto: productos });
     },
     detailProduct: function(req,res){
@@ -34,7 +35,7 @@ const productsController =
 
         for(let i = 0; i < productos.length; i++) {
 			if(productos[i].id == req.params.idProducto) {
-				return res.render('products/detailProduct', {producto: productos[i]});
+				return res.render('products/detailProduct', {producto: productos[i], productos: productos});
             }
         }
         res.send('No encontramos un producto con esas características');

@@ -12,12 +12,11 @@
         <%- include("../partials/header")%>
 
         <div class="container">
-            <div class="row">
+
+            <div class="row fila1">
 
                 <section class="col-12 col-md-6 imagenes">
-                    <article class="row contenedorImagenes" >
-                        <img class="col-9 imagenPrincipal img-thumbnail" src="/images/products/<%= producto.image %>">
-                    </article>
+                    <img class="col-9 imagenPrincipal img-thumbnail" src="/images/products/<%= producto.image %>">
                 </section>
             
                 <form method="GET" action="" class="col-12 col-md-6 datosPrincipales">
@@ -65,19 +64,17 @@
                 <section class="col-12 col-md-6 tambien">
                     <h4>Tambien podria interesarte</h4>
 
-                    <article class="row articulosTambien">
+                    <article class="articulosTambien">
                     
-                        <article class="col-6">
-                            <img class="imagenSecundaria img-thumbnail" src="/images/producto2.jpg">
-                            <h5>Titulo</h5>
-                            <h6>Precio</h6>
-                        </article>
-
-                        <article class="col-6">
-                            <img class="imagenSecundaria img-thumbnail" src="/images/producto2.jpg">
-                            <h5>Titulo</h5>
-                            <h6>Precio</h6>
-                        </article>
+                        <% for(let i = 3; i < 5; i++){ %>
+                        <a href="/products/detailProduct/<%= productos[i].id %>">
+                            <article class="col-12 col-md-6 articuloTambien">
+                                <img class="imagenSecundaria img-thumbnail" src="/images/products/<%= productos[i].image %>">
+                                <h5><%= productos[i].name %></h5>
+                                <h6><%= productos[i].price %></h6>
+                            </article>
+                        </a>
+                        <% } %>
 
                     </article>
 
