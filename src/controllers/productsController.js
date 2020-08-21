@@ -5,12 +5,19 @@ let productos;
 let imagenProducto;
 
 let ultimoID = function(array) {
-	let contador = array[0].id;
-	for(let i = 0; i < array.length; i++) {
-		if(array[i].id > contador) {
-			contador = array[i].id;
-		}
-	}
+    let contador;
+    if(array.length == 0){
+        contador = 0
+    }else{
+        contador = array[0].id;
+        for(let i = 0; i < array.length; i++) {
+            if(array[i].id > contador) {
+                contador = array[i].id;
+            }
+        }
+    }
+    
+	
 	return contador
 }
 

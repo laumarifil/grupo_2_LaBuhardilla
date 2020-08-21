@@ -47,7 +47,7 @@ const usersController =
                     req.session.logueado = usuarios[i].email ;
                     
                     if(req.body.remember){
-                        res.cookie('userCookie', usuarios[i].email , { maxAge: 60000 * 60 * 24 })
+                        res.cookie('userCookie', usuarios[i].email , { maxAge: 1000 * 60 * 24 })
                     }
 
 
