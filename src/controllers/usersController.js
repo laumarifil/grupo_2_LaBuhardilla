@@ -6,6 +6,9 @@ let { check, validationResult, body } = require('express-validator');
 let usuarios;
 let imagenUsuario;
 
+const db = require('../database/models');
+const operator = db.Sequelize.Op;
+
 let ultimoID = function(array) {
     let contador = array[0].id;
     for(let i = 0; i < array.length; i++) {
@@ -18,11 +21,22 @@ let ultimoID = function(array) {
 
 const usersController =
 {
-    listar: function(req, res){
-        usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
+    listar: function(req, res, next){
+        /*  usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
         usuarios = JSON.parse(usuarios);
         
         res.render('users/users', {usuario: usuarios });
+        */
+       db.User.findAll(
+        /* {
+             include: [{association: 'Role'}]
+         }
+         */
+     )
+     .then(function(response){
+         return res.render('users/users', {usuario: response });
+         //return res.send(response)
+     })
     },
     carrito: function(req,res){
         res.render('users/carrito');
@@ -66,14 +80,14 @@ const usersController =
         },
     newUser: function(req,res, next){
             
-            let errors = validationResult(req);
+           let errors = validationResult(req);
             
-            usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
-            usuarios = JSON.parse(usuarios);
+           // usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
+           // usuarios = JSON.parse(usuarios);
             
             if(errors.isEmpty()) {
 
-                if (req.files.length == 0){
+              /*  if (req.files.length == 0){
                     imagenUsuario = 'default.png'
                 } else {
                     imagenUsuario = req.files[0].filename
@@ -93,13 +107,38 @@ const usersController =
                 
                 fs.writeFileSync(path.join(__dirname, '../data/users.json'), usuarios);
                 
-                return res.redirect('/users/userOK');
+                return res.redirect('/users/userOK'); */
+           
+    if (req.files.length == 0){
+        imagenUsuario = 'default.png'
+    } else {
+        imagenUsuario = req.files[0].filename
+    }
+    db.User.create({
+        name: req.body.name,
+        surname: req.body.surname,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 10),
+        image: imagenUsuario,
+        id_role: 1,
+        //phone: ,
+        //address: ,
+        id_city: 20
+    })
+    .then(function(result){
+        res.redirect('/users/userOK')
+    })
+    .catch(function(error){
+        res.send(error)
+    })
+
+
             } else {
                 return res.render('users/registration',{
                     errors : errors.mapped(),
                     old:req.body
                 })
-            }
+            } 
         },
         userOK: function(req,res){
             res.render('users/userOK');

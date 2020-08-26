@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+const db = require('../database/models');
+const operator = db.Sequelize.Op;
+
 let productos;
 let imagenProducto;
 
@@ -23,39 +26,35 @@ let ultimoID = function(array) {
 
 const productsController =
 {
-    products: function(req,res){
-        productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
+    products: function(req,res, next){
+        /* productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
         console.log(productos);
-        res.render('products/products', {producto: productos });
+        res.render('products/products', {producto: productos }); */
+            
+           db.Product.findAll()
+         .then(function(response){
+             return res.render('products/products', {producto: response });
+             
+         })
     },
-    detailProduct: function(req,res){
+    detailProduct: function(req,res, next){
+        db.Product.findByPk(req.params.idProducto)
+        .then(function(response){
+             return res.render('products/detailProduct', {producto: response });
+            
+             
+         })
+        },
 
-        productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
-        productos = JSON.parse(productos);
-
-        console.log('ENTRE A DETALLE PRODUCTOOOOOOOOOOOOOO');
-        console.log('ID PRODUCTO ' + req.params.idProducto);
-        console.log(productos);
-        console.log(productos[req.params.idProducto])
-
-        for(let i = 0; i < productos.length; i++) {
-			if(productos[i].id == req.params.idProducto) {
-				return res.render('products/detailProduct', {producto: productos[i], productos: productos});
-            }
-        }
-        res.send('No encontramos un producto con esas características');
-        
-        //res.render('products/detailProduct', {producto: productos[req.params.idProducto]})
-    },
     newProduct: function(req,res){
         res.render('products/newProduct')
     },
     createProduct: function(req,res, next){
 
-        productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
-        productos = JSON.parse(productos);
+       /* productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
+       productos = JSON.parse(productos);
 
         if (req.files.length == 0){
             imagenProducto = 'default.jpg'
@@ -79,14 +78,35 @@ const productsController =
 
         fs.writeFileSync(path.join(__dirname, '../data/products.json'), productos);
 
-        res.redirect('/products/productOK');
+        res.redirect('/products/productOK'); */
+        
+    if (req.files.length == 0){
+        imagenProducto = 'default.jpg'
+    } else {
+        imagenProducto = req.files[0].filename
+    }
+    db.Product.create({
+        name: req.body.name,
+        price: req.body.price,
+        id_category: 1,
+        id_color: 1,
+        image: imagenProducto,
+        description: req.body.description,
+        stock: req.body.stock
+    })
+    .then(function(result){
+        res.redirect('/products/productOK')
+    })
+    .catch(function(error){
+        res.send(error)
+    })
     },
     newProductOK: function(req,res){
         res.render('products/productOK');
     },
     editProduct: function(req,res){
 
-        productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
+      /*  productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
         console.log('ENTRE A EDITAR PRODUCTO');
@@ -100,11 +120,19 @@ const productsController =
 		}
 		res.send('No encontramos un producto con esas características');
 
-        //res.render('products/editProduct', {producto: productos[req.params.idProducto]});
-    },
-    modifyProduct: function(req,res, next){
+        //res.render('products/editProduct', {producto: productos[req.params.idProducto]}); */
+        db.Product.findByPk(req.params.idProducto)
+        .then(function(result){
+            return res.render('products/editProduct', {
+                producto: result
+            })
+        })
+   
 
-        productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
+    },
+    modifyProduct: function(req, res, next){
+
+       /* productos = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8');
         productos = JSON.parse(productos);
 
         console.log('Estoy en el PUT');
@@ -135,8 +163,34 @@ const productsController =
                 return res.redirect('/products/productEditOK');
 			}
 		}
-		res.send('No encontramos un producto con esas características');
-
+        res.send('No encontramos un producto con esas características');
+        
+*/
+      /*  if (req.files.length > 0){
+            imagenProducto = req.files[0].filename
+        
+        } */
+            db.Product.update({
+        
+            name: req.body.name,
+            price: req.body.price,
+            id_category: 1,
+            id_color: 1,
+            image: 'una imagen',
+            description: req.body.description,
+            stock: req.body.stock
+        },
+        {
+            where:{
+                id: req.params.idProducto
+            }
+        })
+        .then(function(response){
+            return res.render('products/productEditOK')
+        })
+        .catch(function(error){
+            res.send(error)
+        })
     },
     editProductOK: function(req,res){
         res.render('products/productEditOK');
