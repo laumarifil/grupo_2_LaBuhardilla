@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <%- include("../partials/head")%>
+
+    </head>
+
+    <body>
+
+        <%- include("../partials/header")%>
+        
+        <div class="container containerRegistration">
+            <div class="login-container">
+                
+                <div class="register">
+
+                    <h3>Editar datos</h3>
+                    
+                    
+                    <form action="/users/editUser/<%= usuario.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+                        <input type="text" placeholder="Nombre" class="nombre" name="name" value="<%= usuario.name %>">
+                        <small class="text-danger"><%= (typeof errors != 'undefined' && errors.name) ? errors.name.msg : '' %></small>
+
+                        <input type="text" placeholder="Apellido" class="nombre" name="surname" value="<%= usuario.surname %>">
+                        <small class="text-danger"><%= (typeof errors != 'undefined' && errors.surname) ? errors.surname.msg : '' %></small>
+
+                        <input type="text" placeholder="Correo" class="correo" name="email" value="<%= usuario.email %>">
+                        <small class="text-danger"><%= (typeof errors != 'undefined' && errors.email) ? errors.email.msg : '' %></small>
+
+                        <input type="submit" class="submit" value="MODIFICAR">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include("../partials/footer")%>
+        
+        <%- include("../partials/scripts")%>
+        
+    </body>
+
+</html>

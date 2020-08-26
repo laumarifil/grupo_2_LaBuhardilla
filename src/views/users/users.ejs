@@ -18,15 +18,18 @@
 
         <% for(let i = 0; i < usuario.length; i++){ %>
           <section class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="imgUserContainer">
-              <img src="images/users/<%= usuario[i].image %>" class="img-thumbnail" alt="">
-            </div>
-            <h6> ID: <%= usuario[i].id %> </h6>       
-            <h6> Nombre: <%= usuario[i].name %> </h6>
-            <h6> Apellido: <%= usuario[i].surname %> </h6>
-            <h6> Email: <%= usuario[i].email %> </h6>
-            <h6> Teléfono: <%= usuario[i].phone %> </h6>
-            <h6> Dirección: <%= usuario[i].address %> </h6>
+            <article>
+              <div class="imgUserContainer">
+                <img src="images/users/<%= usuario[i].image %>" class="img-thumbnail" alt="">
+              </div>
+              <h6> ID: <%= usuario[i].id %> </h6>       
+              <h6> Nombre: <%= usuario[i].name %> </h6>
+              <h6> Apellido: <%= usuario[i].surname %> </h6>
+              <h6> Email: <%= usuario[i].email %> </h6>
+            </article>
+            <article>
+              <a href="/users/profile/<%= usuario[i].id %>"><button type="button" class="btn btn-outline-success btn-sm">Detalle Usuario</button></a>
+            </article>
           </section>               
         <% } %>
 

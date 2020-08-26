@@ -22,24 +22,21 @@ let ultimoID = function(array) {
 const usersController =
 {
     listar: function(req, res, next){
-        /*  usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
-        usuarios = JSON.parse(usuarios);
-        
-        res.render('users/users', {usuario: usuarios });
-        */
-       db.User.findAll(
-        /* {
-             include: [{association: 'Role'}]
-         }
-         */
-     )
-     .then(function(response){
+
+       db.User.findAll()
+       .then(function(response){
          return res.render('users/users', {usuario: response });
-         //return res.send(response)
      })
     },
     carrito: function(req,res){
         res.render('users/carrito');
+    },
+    detailUser: function(req, res){
+
+        db.User.findByPk(req.params.idUsuario)
+        .then(function(result){
+            res.render('users/detailUser', {usuario: result})
+        })
     },
     registration: function(req,res){
         res.render('users/registration');
@@ -63,9 +60,6 @@ const usersController =
                     if(req.body.remember){
                         res.cookie('userCookie', usuarios[i].email , { maxAge: 1000 * 60 * 24 })
                     }
-
-
-
                     return res.redirect('/');
                 }
             }
@@ -80,57 +74,33 @@ const usersController =
         },
     newUser: function(req,res, next){
             
-           let errors = validationResult(req);
-            
-           // usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
-           // usuarios = JSON.parse(usuarios);
+            let errors = validationResult(req);
             
             if(errors.isEmpty()) {
 
-              /*  if (req.files.length == 0){
+                if (req.files.length == 0){
                     imagenUsuario = 'default.png'
                 } else {
                     imagenUsuario = req.files[0].filename
                 }
-                               
-                let nuevoUsuario = {
-                    id: ultimoID(usuarios) + 1,
+
+                db.User.create({
                     name: req.body.name,
                     surname: req.body.surname,
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
                     image: imagenUsuario,
-                }
-                
-                usuarios.push(nuevoUsuario);
-                usuarios = JSON.stringify(usuarios);
-                
-                fs.writeFileSync(path.join(__dirname, '../data/users.json'), usuarios);
-                
-                return res.redirect('/users/userOK'); */
-           
-    if (req.files.length == 0){
-        imagenUsuario = 'default.png'
-    } else {
-        imagenUsuario = req.files[0].filename
-    }
-    db.User.create({
-        name: req.body.name,
-        surname: req.body.surname,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10),
-        image: imagenUsuario,
-        id_role: 1,
-        //phone: ,
-        //address: ,
-        id_city: 20
-    })
-    .then(function(result){
-        res.redirect('/users/userOK')
-    })
-    .catch(function(error){
-        res.send(error)
-    })
+                    id_role: 1,
+                    //phone: ,
+                    //address: ,
+                    id_city: 20
+                })
+                .then(function(result){
+                    res.redirect('/users/userOK')
+                })
+                .catch(function(error){
+                    res.send(error)
+                })
 
 
             } else {
@@ -150,8 +120,40 @@ const usersController =
             req.session.destroy();
             res.cookie('userCookie','', {maxAge: -1})
             res.redirect('/');
-        }
-    }
+        },
+        editUser: function(req,res){
+
+            db.User.findByPk(req.params.idUsuario)
+            .then(function(result){
+                return res.render('users/editUser', {
+                    usuario: result
+                })
+            })
+        },
+        modifyUser: function(req, res, next){
     
+            db.User.update(
+                {
+                    name: req.body.name,
+                    surname: req.body.surname,
+                    email: req.body.email,
+                },
+                {
+                    where:{
+                        id: req.params.idUsuario
+                    }
+                })
+            .then(function(response){
+                return res.render('users/userEditOK')
+            })
+            .catch(function(error){
+                res.send(error)
+            })
+        },
+        editUserOK: function(req,res){
+            res.render('users/userEditOK');
+        },
+
+    }
     
     module.exports = usersController;

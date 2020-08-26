@@ -26,6 +26,9 @@ var upload = multer({ storage: storage });
 router.get('/', productsController.products);
 router.get('/detailProduct/:idProducto', productsController.detailProduct);
 
+/* Busqueda de productos */
+router.get('/searchProduct/:key', productsController.searchProduct);
+
 /* Alta de productos */
 router.get('/newProduct', authMiddleware , productsController.newProduct);
 router.post('/newProduct', authMiddleware , upload.any(), productsController.createProduct);
@@ -33,33 +36,12 @@ router.get('/productOK', productsController.newProductOK);
 
 /* Modificacion de productos */
 router.get('/editProduct/:idProducto', authMiddleware , productsController.editProduct);
-//router.put('/editProduct/:idProducto', authMiddleware , upload.any(), productsController.modifyProduct);
-//router.get('/productEditOK', productsController.editProductOK);
-
-
-router.put('/editProduct/:idProducto', function(req, res){
-   
-})
+router.put('/editProduct/:idProducto', authMiddleware , upload.any(), productsController.modifyProduct);
+router.get('/productEditOK', productsController.editProductOK);
 
 /* Baja de productos */
-//router.get('/deleteProduct/:idProducto',authMiddleware, productsController.confirmDeleteProduct);
-//router.delete('/deleteProduct/:idProducto', authMiddleware ,productsController.deleteProduct);
-//router.get('/productDeleteOK', productsController.deleteProductOK);
-
-/* Sequelize Delete Product */
-router.delete('/deleteProduct/:idProducto', function(req, res){
-    db.Product.destroy({
-        where:{
-            ID: req.params.id
-        }
-    })
-    .then(function(result){
-        res.send('Se eliminó el producto');
-        res.redirect('/')
-    })
-    .catch(function(error){
-        res.send(error)
-    })
-})
+router.get('/deleteProduct/:idProducto',authMiddleware, productsController.confirmDeleteProduct);
+router.delete('/deleteProduct/:idProducto', authMiddleware ,productsController.deleteProduct);
+router.get('/productDeleteOK', productsController.deleteProductOK);
 
 module.exports = router;

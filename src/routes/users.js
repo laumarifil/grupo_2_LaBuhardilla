@@ -42,6 +42,12 @@ router.get('/logout', usersController.logOut);
 
 /* Perfil de usuarios */
 router.get('/profile', authMiddleware , usersController.profile);
+router.get('/profile/:idUsuario', usersController.detailUser)
+
+/* Edicion de usuarios */
+router.get('/editUser/:idUsuario', usersController.editUser);
+router.put('/editUser/:idUsuario', upload.any(), usersController.modifyUser);
+router.get('/userEditOK', usersController.editUserOK);
 
 
 module.exports = router;
