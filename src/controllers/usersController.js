@@ -25,17 +25,16 @@ const usersController =
 
        db.User.findAll()
        .then(function(response){
-         return res.render('users/users', {usuario: response });
-     })
+         return res.render('users/users', {usuario: response});
+        })
     },
     carrito: function(req,res){
         res.render('users/carrito');
     },
     detailUser: function(req, res){
-
         db.User.findByPk(req.params.idUsuario)
-        .then(function(result){
-            res.render('users/detailUser', {usuario: result})
+        .then(function(response){
+            res.render('users/detailUser', {usuario: response})
         })
     },
     registration: function(req,res){
