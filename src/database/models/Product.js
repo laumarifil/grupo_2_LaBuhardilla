@@ -1,3 +1,5 @@
+let db = require('./Color')
+
 module.exports = (sequelize, dataTypes) => {
     let alias = "Product"
     let cols = {
@@ -39,17 +41,17 @@ module.exports = (sequelize, dataTypes) => {
     let config = {
         tableName: "Products",
         timestamps: false
-        //underscored: true
+       
     }
     
     const Product = sequelize.define(alias, cols, config);
 
-    /*Product.associate = function(models){
+    Product.associate = function(models){
         Product.belongsTo(models.Color, {
             as: 'colorDelProducto',
-            foreignKey: 'ID_COLOR'
+            foreignKey: 'id_color'
         })
     }
-*/
+
 return Product;
 }

@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Role"
+    let alias = "Payment"
     let cols = {
         id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
@@ -13,10 +13,10 @@ module.exports = (sequelize, dataTypes) => {
         }
     }
     let config = {
-        tableName: "Role",
+        tableName: "Payments",
         timestamps: false
     }
     
-const Role = sequelize.define(alias, cols, config);
-return Role;
+const Payment = sequelize.define(alias, cols, config);
+return Payment;
 }

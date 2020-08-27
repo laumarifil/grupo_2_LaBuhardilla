@@ -69,7 +69,7 @@ const productsController =
             description: req.body.description,
             stock: req.body.stock
         })
-        .then(function(result){
+        .then(function(response){
             res.redirect('/products/productOK')
         })
         .catch(function(error){
@@ -82,9 +82,9 @@ const productsController =
     editProduct: function(req,res){
 
         db.Product.findByPk(req.params.idProducto)
-        .then(function(result){
+        .then(function(response){
             return res.render('products/editProduct', {
-                producto: result
+                producto: response
             })
         })
     },
@@ -95,7 +95,7 @@ const productsController =
                 name: req.body.name,
                 price: req.body.price,
                 id_category: 1,
-                id_color: 1,
+                id_color: {include:[{association:'colorDelProducto'}]},
                 image: 'una imagen',
                 description: req.body.description,
                 stock: req.body.stock
@@ -118,9 +118,9 @@ const productsController =
     confirmDeleteProduct: function(req,res){
 
         db.Product.findByPk(req.params.idProducto)
-        .then(function(result){
+        .then(function(response){
             return res.render('products/deleteProduct', {
-                producto: result
+                producto: response
             })
         })
     },
@@ -131,7 +131,7 @@ const productsController =
                 ID: req.params.idProducto
             }
         })
-        .then(function(result){
+        .then(function(response){
             return res.redirect('/products/productDeleteOK')
         })
         .catch(function(error){
