@@ -139,7 +139,19 @@ const productsController =
         })
     },
     deleteProductOK: function(req,res){
-        res.render('products/productDeleteOK');
+        res.render('products/productDeleteOK')
+    },
+    newCategory: function(req, res){
+        res.render('products/newCategories')
+    },
+    newColor: function(req, res){
+        res.render('products/newColors')
+    },
+    colors: function(req, res){
+        res.render('products/colors')
+    },
+    categories: function(req, res){
+        res.render('products/categories')
     }
 }
 

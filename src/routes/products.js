@@ -39,6 +39,23 @@ router.get('/editProduct/:idProducto', authMiddleware , productsController.editP
 router.put('/editProduct/:idProducto', authMiddleware , upload.any(), productsController.modifyProduct);
 router.get('/productEditOK', productsController.editProductOK);
 
+
+/* Alta de Categorias de productos */
+router.get('/newCategory', productsController.newCategory);
+//router.post('/newCategory', productsController.newCategory);
+
+/* Listado de Categorias de productos */
+router.get('/categories', productsController.categories);
+
+/* Listado de Colores de productos */
+router.get('/colors', productsController.colors);
+
+
+/* Alta de Colores de productos */
+router.get('/newColor', productsController.newColor);
+//router.post('/newColor', productsController.newColor);
+
+
 /* Baja de productos */
 router.get('/deleteProduct/:idProducto',authMiddleware, productsController.confirmDeleteProduct);
 router.delete('/deleteProduct/:idProducto', authMiddleware ,productsController.deleteProduct);
