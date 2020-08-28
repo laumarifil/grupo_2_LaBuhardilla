@@ -32,10 +32,13 @@ const usersController =
         res.render('users/carrito');
     },
     detailUser: function(req, res){
-        db.User.findByPk(req.params.idUsuario)
+        db.User.findByPk(req.params.idUsuario, {include: [{association: 'rolDelUsuario'}]})
         .then(function(response){
             res.render('users/detailUser', {usuario: response})
         })
+        .catch(function(error){
+            res.send(error)
+        }) 
     },
     registration: function(req,res){
         res.render('users/registration');
