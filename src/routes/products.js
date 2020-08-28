@@ -39,26 +39,45 @@ router.get('/editProduct/:idProducto', authMiddleware , productsController.editP
 router.put('/editProduct/:idProducto', authMiddleware , upload.any(), productsController.modifyProduct);
 router.get('/productEditOK', productsController.editProductOK);
 
-
-/* Alta de Categorias de productos */
-router.get('/newCategory', productsController.newCategory);
-//router.post('/newCategory', productsController.newCategory);
-
-/* Listado de Categorias de productos */
-router.get('/categories', productsController.categories);
-
-/* Listado de Colores de productos */
-router.get('/colors', productsController.colors);
-
-
-/* Alta de Colores de productos */
-router.get('/newColor', productsController.newColor);
-//router.post('/newColor', productsController.newColor);
-
-
 /* Baja de productos */
 router.get('/deleteProduct/:idProducto',authMiddleware, productsController.confirmDeleteProduct);
 router.delete('/deleteProduct/:idProducto', authMiddleware ,productsController.deleteProduct);
 router.get('/productDeleteOK', productsController.deleteProductOK);
+
+/* Listado de Categorias de productos */
+router.get('/categories', productsController.categories);
+
+/* Alta de Categorias de productos */
+router.get('/categories/newCategory', productsController.newCategory);
+router.post('/categories/newCategory', productsController.createCategory);
+router.get('/categories/categoryOK', productsController.categoryOK);
+
+/* Modificacion de Categorias de productos */
+router.get('/categories/editCategory/:idCategoria', productsController.editCategory);
+router.put('/categories/editCategory/:idCategoria', productsController.modifyCategory);
+router.get('/categories/categoryEditOK', productsController.editCategoryOK);
+
+/* Baja de categoriass */
+router.get('/categories/deleteCategory/:idCategoria', productsController.confirmDeleteCategory);
+router.delete('/categories/deleteCategory/:idCategoria', productsController.deleteCategory);
+router.get('/categories/categoryDeleteOK', productsController.deleteCategoryOK);
+
+/* Listado de Colores de productos */
+router.get('/colors', productsController.colors);
+
+/* Alta de Colores de productos */
+router.get('/colors/newColor', productsController.newColor);
+router.post('/colors/newColor', productsController.createColor);
+router.get('/colors/colorOK', productsController.colorOK);
+
+/* Modificacion de colores de productos */
+router.get('/colors/editColor/:idColor', productsController.editColor);
+router.put('/colors/editColor/:idColor', productsController.modifyColor);
+router.get('/colors/colorEditOK', productsController.editColorOK);
+
+/* Baja de colores */
+router.get('/colors/deleteColor/:idColor', productsController.confirmDeleteColor);
+router.delete('/colors/deleteColor/:idColor', productsController.deleteColor);
+router.get('/colors/colorDeleteOK', productsController.deleteColorOK);
 
 module.exports = router;

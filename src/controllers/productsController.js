@@ -3,6 +3,7 @@ const path = require('path');
 
 const db = require('../database/models');
 const { sequelize } = require('../database/models');
+const { response } = require('express');
 const operator = db.Sequelize.Op;
 
 let productos;
@@ -144,18 +145,155 @@ const productsController =
     deleteProductOK: function(req,res){
         res.render('products/productDeleteOK')
     },
-    newCategory: function(req, res){
-        res.render('products/newCategories')
+    categories: function(req, res){
+
+        db.Category.findAll()
+        .then(function(result){
+            res.render('products/categories', { categorias: result})
+        })
     },
+    newCategory: function(req, res){
+        res.render('products/newCategory')
+    },
+    createCategory: function(req, res){
+        console.log(req.body.name);
+        db.Category.create({
+            name: req.body.name
+        })
+        .then(function(result){
+            res.redirect('/products/categories/categoryOK')
+        })
+    },
+    categoryOK: function(req,res){
+        res.render('products/categoryOK');
+    },
+    editCategory: function(req,res){
+
+        db.Category.findByPk(req.params.idCategoria)
+        .then(function(response){
+            return res.render('products/editCategory', {categoria: response})
+        })
+    },
+    modifyCategory: function(req, res, next){
+
+        db.Category.update(
+            {
+                name: req.body.name,
+            },
+            {
+                where:{
+                    id: req.params.idCategoria
+                }
+            })
+        .then(function(response){
+            return res.redirect('/products/categories/categoryEditOK')
+        })
+        .catch(function(error){
+            res.send(error)
+        })
+    },
+    editCategoryOK: function(req,res){
+        res.render('products/categoryEditOK');
+    },
+    confirmDeleteCategory: function(req,res){
+
+        db.Category.findByPk(req.params.idCategoria)
+        .then(function(response){
+            return res.render('products/deleteCategory', {categoria: response})
+        })
+    },
+    deleteCategory: function(req,res){
+
+        db.Category.destroy({
+            where:{
+                id: req.params.idCategoria
+            }
+        })
+        .then(function(response){
+            return res.redirect('/products/categories/categoryDeleteOK')
+        })
+        .catch(function(error){
+            res.send(error)
+        })
+    },
+    deleteCategoryOK: function(req,res){
+        res.render('products/categoryDeleteOK')
+    },
+    colors: function(req, res){
+
+        db.Color.findAll()
+       .then(function(result){
+           res.render('products/colors', {colores: result})
+       })
+   },
     newColor: function(req, res){
         res.render('products/newColors')
     },
-    colors: function(req, res){
-        res.render('products/colors')
+    createColor: function(req,res){
+        db.Color.create({
+            name: req.body.name
+        })
+        .then(function(result){
+            res.redirect('/products/colors/colorOK')
+        })
     },
-    categories: function(req, res){
-        res.render('products/categories')
-    }
+    colorOK: function(req, res){
+        res.render('products/colorOK')
+    },
+    editColor: function(req,res){
+
+        db.Color.findByPk(req.params.idColor)
+        .then(function(response){
+            return res.render('products/editColor', {color: response})
+        })
+        
+    },
+    modifyColor: function(req, res, next){
+
+        db.Color.update(
+            {
+                name: req.body.name,
+            },
+            {
+                where:{
+                    id: req.params.idColor
+                }
+            })
+        .then(function(response){
+            return res.redirect('/products/colors/colorEditOK')
+        })
+        .catch(function(error){
+            res.send(error)
+        })
+    },
+    editColorOK: function(req,res){
+        res.render('products/colorEditOK');
+    },
+    confirmDeleteColor: function(req,res){
+
+        db.Color.findByPk(req.params.idColor)
+        .then(function(response){
+            return res.render('products/deleteColor', {color: response})
+        })
+    },
+    deleteColor: function(req,res){
+
+        db.Color.destroy({
+            where:{
+                id: req.params.idColor
+            }
+        })
+        .then(function(response){
+            return res.redirect('/products/colors/colorDeleteOK')
+        })
+        .catch(function(error){
+            res.send(error)
+        })
+    },
+    deleteColorOK: function(req,res){
+        res.render('products/colorDeleteOK')
+    },
+
 }
 
 module.exports = productsController;

@@ -16,15 +16,17 @@
                 
                 <div class="register">
 
-                    <h4>Agregar nuevo color</h4>
+                    <h4>Edite el color</h4>
                     
-                    <form action="/products/colors/newColor" method="POST">
+                    <form action="/products/colors/editColor/<%= color.id %>?_method=PUT" method="POST">
 
-                        <input type="text" placeholder="Escribí el nombre del color" class="nombre" name="name">
+                        <input type="text" placeholder="Escribí el nombre del color" class="nombre" name="name" value="<%= color.name %>">
 
-                        <input type="submit" class="submit" value="AGREGAR">
-
+                        <input type="submit" class="submit" value="Modificar">
+                        <br>
+                        <br>
                     </form>
+                    <a href="/products/colors"><button>Cancelar</button></a>
                 </div>
             </div>
         </div>

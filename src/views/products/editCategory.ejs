@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <%- include("../partials/head")%>
+
+    </head>
+
+    <body>
+
+        <%- include("../partials/header")%>
+        
+        <div class="container containerRegistration">
+            <div class="login-container">
+                
+                <div class="register">
+
+                    <h4>Modifique su categoria</h4>
+                    
+                    
+                    <form action="/products/categories/editCategory/<%= categoria.id %>?_method=PUT" method="POST">
+
+                        <input type="text" placeholder="Escribí el nombre de la categoría" class="nombre" name="name" value="<%= categoria.name %>">
+
+                        <input type="submit" class="submit" value="Modificar">
+                        <br>
+                        <br>
+                    </form>
+                    <a href="/products/categories"><button>Cancelar</button></a>
+                </div>
+            </div>
+        </div>
+
+        <%- include("../partials/footer")%>
+        
+        <%- include("../partials/scripts")%>
+        
+    </body>
+
+</html>
