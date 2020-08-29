@@ -44,8 +44,9 @@ const productsController =
         }) 
         },
     searchProduct: function(req, res){
+ 
         db.Product.findAll(
-            { where: { name: operator.substring = req.params.key } }
+            { where: { name: operator.substring = req.body.key } }
         )
         .then(function(response){
             return res.render('products/searchProduct', {producto: response});
