@@ -27,7 +27,7 @@ router.get('/', productsController.products);
 router.get('/detailProduct/:idProducto', productsController.detailProduct);
 
 /* Busqueda de productos */
-router.get('/searchProduct/:key', productsController.searchProduct);
+router.get('/searchProduct', productsController.searchProduct);
 
 /* Alta de productos */
 router.get('/newProduct', authMiddleware , productsController.newProduct);
