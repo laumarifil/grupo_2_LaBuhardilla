@@ -1,12 +1,13 @@
-const fs = require('fs');
 const path = require('path');
 
 const db = require('../database/models');
+
 const { sequelize } = require('../database/models');
 const { response } = require('express');
+
 const operator = db.Sequelize.Op;
 
-let productos;
+
 let imagenProducto;
 
 let ultimoID = function(array) {
@@ -36,8 +37,7 @@ const productsController =
     },
     detailProduct: function(req,res, next){
         db.Product.findByPk(req.params.idProducto, {include: {all: true} })
-        .then(function(response){
-            
+        .then(function(response){            
              return res.render('products/detailProduct', {producto: response });    
          })
         .catch(function(error){
@@ -56,7 +56,12 @@ const productsController =
     },
 
     newProduct: function(req,res){
-        res.render('products/newProduct')
+        
+        db.Category.findAll()
+        .then(function(response){
+            res.render('products/newProduct' , { categoria : response })
+        })
+             
     },
     createProduct: function(req,res, next){
 
@@ -69,7 +74,7 @@ const productsController =
         db.Product.create({
             name: req.body.name,
             price: req.body.price,
-            id_category: 1,
+            id_category: req.body.category,
             id_color: 1,
             image: imagenProducto,
             description: req.body.description,
