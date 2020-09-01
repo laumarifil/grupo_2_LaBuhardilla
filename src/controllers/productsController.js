@@ -35,8 +35,9 @@ const productsController =
          })
     },
     detailProduct: function(req,res, next){
-        db.Product.findByPk(req.params.idProducto, {include: [{association: 'colorDelProducto'}]})
+        db.Product.findByPk(req.params.idProducto, {include: {all: true} })
         .then(function(response){
+            
              return res.render('products/detailProduct', {producto: response });    
          })
         .catch(function(error){
