@@ -19,7 +19,7 @@
                     <h3>Crear cuenta</h3>
                     
                     
-                    <form action="/users/registration" method="POST" enctype="multipart/form-data">
+                    <form id="register" action="/users/registration" method="POST" enctype="multipart/form-data">
 
                         <input type="text" placeholder="Nombre" class="nombre" name="name" value="<%= (typeof old != 'undefined' && !errors.name) ? old.name : '' %>">
                         <small class="text-danger"><%= (typeof errors != 'undefined' && errors.name) ? errors.name.msg : '' %></small>
@@ -27,14 +27,15 @@
                         <input type="text" placeholder="Apellido" class="nombre" name="surname" value="<%= (typeof old != 'undefined' && !errors.surname) ? old.surname : '' %>">
                         <small class="text-danger"><%= (typeof errors != 'undefined' && errors.surname) ? errors.surname.msg : '' %></small>
 
-                        <input type="text" placeholder="Correo" class="correo" name="email" value="<%= (typeof old != 'undefined' && !errors.email) ? old.email : '' %>">                        
-                        <small class="text-danger"><%= (typeof errors != 'undefined' && errors.email) ? errors.email.msg : '' %></small>
+                        <input id="email" type="text" placeholder="Correo" class="correo" name="email" value="<%= (typeof old != 'undefined' && !errors.email) ? old.email : '' %>">                        
+                        <small class="text-danger" id="errorEmail"></small>
 
-                        <input type="password" placeholder="Contraseña" class="pass" name="password">
-                        <small class="text-danger"><%= (typeof errors != 'undefined' && errors.password) ? errors.password.msg : '' %></small>
+                        <input id="password" type="password" placeholder="Contraseña" class="pass form-control password1" name="password">
+                        <span class="fa fa-fw fa-eye password-icon show-password"></span>                      
+                        <small class="text-danger" id="errorPassword"></small>                        
 
-                        <input type="password" placeholder="Confirma contraseña" class="repass" name="repassword">
-                        <small class="text-danger"><%= (typeof errors != 'undefined' && errors.repassword) ? errors.repassword.msg : '' %></small>
+                        <input id="repassword" type="password" placeholder="Confirma contraseña" class="repass form-control password2" name="repassword">
+                        <small class="text-danger" id="errorRePassword"></small>
 
                         <input type="file" class="nombre" name="image">
                         <input type="submit" class="submit" value="REGISTRARSE">
@@ -44,10 +45,16 @@
                 </div>
             </div>
         </div>
+        
+        <script src="/javascripts/loginValidation.js"></script>
+
+        <script src="/javascripts/mostrarPass.js"></script>
 
         <%- include("../partials/footer")%>
         
         <%- include("../partials/scripts")%>
+
+        
         
     </body>
 
