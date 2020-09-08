@@ -28,20 +28,18 @@
                             <div class="col-12 col-md-6">
                                 <label for="category" class="form-label">Categoría:</label>
                                 <select name="category" id="category" class="form-input">
-                               
-                                <% for(let i = 0; i < categoria.length; i++){ %>
+                                    <% for(let i = 0; i < categoria.length; i++){ %>
                                     <option value="<%= categoria[i].id %>"> <%= categoria[i].name %> </option> 
-                                  
-                                  <% } %>
-
+                                    <% } %>
                                 </select>
 
                             </div>
                             <div class="col-12 col-md-6">
                                 <label for="color" class="form-label">Color:</label>
                                 <select name="color" id="color" class="form-input">
-                                    <option value="unico">Unico</option>
-                                    <option value="multiple">Multiple</option>
+                                    <% for(let i = 0; i < color.length; i++){ %>
+                                    <option value="<%= color[i].id %>"><%= color[i].name %></option>
+                                    <% } %>
                                 </select>
                             </div>
                             <div class="col-12">

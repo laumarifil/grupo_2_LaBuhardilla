@@ -4,26 +4,10 @@ const db = require('../database/models');
 
 const { sequelize } = require('../database/models');
 const { response } = require('express');
+const { promiseImpl } = require('ejs');
+const { promises } = require('fs');
 
 const operator = db.Sequelize.Op;
-
-
-let imagenProducto;
-
-let ultimoID = function(array) {
-    let contador;
-    if(array.length == 0){
-        contador = 0
-    }else{
-        contador = array[0].id;
-        for(let i = 0; i < array.length; i++) {
-            if(array[i].id > contador) {
-                contador = array[i].id;
-            }
-        }
-    }
-	return contador
-}
 
 const productsController =
 {
@@ -31,8 +15,7 @@ const productsController =
 
         db.Product.findAll()
          .then(function(response){
-             return res.render('products/products', {producto: response });
-             
+             return res.render('products/products', {producto: response });           
          })
     },
     detailProduct: function(req,res, next){
@@ -57,13 +40,16 @@ const productsController =
 
     newProduct: function(req,res){
         
-        db.Category.findAll()
+        Promise.all([db.Category.findAll(),db.Color.findAll()])
         .then(function(response){
-            res.render('products/newProduct' , { categoria : response })
+            console.log(response)
+            res.render('products/newProduct' , { categoria : response[0], color: response[1] })
         })
              
     },
     createProduct: function(req,res, next){
+
+        let imagenProducto;
 
         if (req.files.length == 0){
             imagenProducto = 'default.jpg'
@@ -75,7 +61,7 @@ const productsController =
             name: req.body.name,
             price: req.body.price,
             id_category: req.body.category,
-            id_color: 1,
+            id_color: req.body.color,
             image: imagenProducto,
             description: req.body.description,
             stock: req.body.stock
@@ -92,35 +78,47 @@ const productsController =
     },
     editProduct: function(req,res){
 
-        db.Product.findByPk(req.params.idProducto)
+        Promise.all([db.Product.findByPk(req.params.idProducto),db.Category.findAll(),db.Color.findAll()])
         .then(function(response){
-            return res.render('products/editProduct', {
-                producto: response
-            })
+            return res.render('products/editProduct', { producto: response[0], categoria: response[1], color: response[2] })
         })
     },
     modifyProduct: function(req, res, next){
 
-        db.Product.update(
-            {
-                name: req.body.name,
-                price: req.body.price,
-                id_category: 1,
-                id_color: {include:[{association:'colorDelProducto'}]},
-                image: 'una imagen',
-                description: req.body.description,
-                stock: req.body.stock
-            },
-            {
-                where:{
-                    id: req.params.idProducto
-                }
-            })
+        let imagenProducto;
+
+        db.Product.findByPk(req.params.idProducto)
         .then(function(response){
-            return res.render('products/productEditOK')
-        })
-        .catch(function(error){
-            res.send(error)
+
+            if (req.files.length > 0){
+                imagenProducto = req.files[0].filename
+            } else {
+                imagenProducto = response.image
+            }
+        }).then(function(){
+
+            db.Product.update(
+                {
+                    name: req.body.name,
+                    price: req.body.price,
+                    id_category: req.body.category,
+                    id_color: req.body.color,
+                    image: imagenProducto,
+                    description: req.body.description,
+                    stock: req.body.stock
+                },
+                {
+                    where:{
+                        id: req.params.idProducto
+                    }
+                })
+            .then(function(response){
+                return res.render('products/productEditOK')
+            })
+            .catch(function(error){
+                res.send(error)
+            })
+
         })
     },
     editProductOK: function(req,res){

@@ -31,16 +31,26 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="category" class="form-label">Categoría:</label>
-                            <select name="category" id="category" class="form-input">
-                                <option value="bazar">Bazar</option>
-                                <option value="deco">Deco</option>
+                            <select name="category" id="category" class="form-input" value="<%= producto.id_category %>">
+                                <% for(let i = 0; i < categoria.length; i++){ %>
+                                    <% if (categoria[i].id == producto.id_category) { %>
+                                        <option value="<%= categoria[i].id %>" selected="selected" ><%= categoria[i].name %></option>
+                                    <% } else { %>
+                                        <option value="<%= categoria[i].id %>"><%= categoria[i].name %></option>
+                                    <% } %>
+                                <% } %>
                             </select>
                         </div>
                         <div class="col-12 col-md-6">
                             <label for="color" class="form-label">Color:</label>
-                            <select name="color" id="color" class="form-input"  >
-                                <option value="unico">Unico</option>
-                                <option value="multiple">Multiple</option>
+                            <select name="color" id="color" class="form-input" value="<%= producto.id_color %>">
+                                <% for(let i = 0; i < color.length; i++){ %>
+                                    <% if (color[i].id == producto.id_color) { %>
+                                        <option value="<%= color[i].id %>" selected="selected" ><%= color[i].name %></option>
+                                    <% } else { %>
+                                        <option value="<%= color[i].id %>"><%= color[i].name %></option>
+                                    <% } %>
+                                <% } %>
                             </select>
                         </div>
                         <div class="col-12">
