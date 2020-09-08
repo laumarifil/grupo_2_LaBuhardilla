@@ -14,7 +14,7 @@ router.get('/', productsController.products);
 router.get('/detailProduct/:idProducto', productsController.detailProduct);
 
 /* Busqueda de productos */
-router.get('/searchProduct', productsController.searchProduct);
+router.post('/searchProduct/', productsController.searchProduct);
 
 /* Alta de productos */
 router.get('/newProduct', authMiddleware , productsController.newProduct);
