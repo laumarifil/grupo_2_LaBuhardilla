@@ -50,29 +50,31 @@ const usersController =
         
         let errors = validationResult(req);
         
-        usuarios = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf8');
-        usuarios = JSON.parse(usuarios);
-        
-        if(errors.isEmpty()){         
+        db.User.findAll()
+            .then(function(usuarios){
+
+                if(errors.isEmpty()){         
             
-            for(let i = 0 ; i<usuarios.length; i++){
-                if(usuarios[i].email == req.body.email && bcrypt.compareSync(req.body.loginPassword, usuarios[i].password)) {                   
-                    req.session.logueado = usuarios[i].email ;
-                    
-                    if(req.body.remember){
-                        res.cookie('userCookie', usuarios[i].email , { maxAge: 1000 * 60 * 24 })
+                    for(let i = 0 ; i<usuarios.length; i++){
+
+                        if(usuarios[i].email == req.body.email && bcrypt.compareSync(req.body.loginPassword, usuarios[i].password)) {                   
+                            req.session.logueado = usuarios[i].email ;
+                            
+                            if(req.body.remember){
+                                res.cookie('userCookie', usuarios[i].email , { maxAge: 1000 * 60 * 24 })
+                            }
+                            return res.redirect('/');
+                        }
                     }
-                    return res.redirect('/');
-                }
-            }
-            return res.render('users/login', {
-                errors:{
-                    email: {
-                        msg : 'credenciales inválidas'
+                    return res.render('users/login', {
+                        errors:{
+                            email: {
+                                msg : 'credenciales inválidas'
+                            }
+                        }
                     }
-                }
-            }
-            )}
+                )}
+            })      
         },
     newUser: function(req,res, next){
             
