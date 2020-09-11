@@ -7,9 +7,6 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const verifyLoginMiddleware = require('../middlewares/verifyLogin');
 const usersMulterMiddleware = require('../middlewares/usersMulterMiddleware');
 
-const db = require('../database/models');
-const operator = db.Sequelize.Op;
-
 
 /* Listado de usuarios */
 router.get('/', authMiddleware , usersController.listar);
