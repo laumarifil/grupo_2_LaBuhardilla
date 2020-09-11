@@ -28,7 +28,6 @@ const productsController =
         }) 
         },
     searchProduct: function(req, res){
- 
         db.Product.findAll(
             { where: { name: operator.substring = req.body.key } }
         )
@@ -37,26 +36,20 @@ const productsController =
         }
         )
     },
-
     newProduct: function(req,res){
-        
         Promise.all([db.Category.findAll(),db.Color.findAll()])
         .then(function(response){
             console.log(response)
             res.render('products/newProduct' , { categoria : response[0], color: response[1] })
         })
-             
     },
     createProduct: function(req,res, next){
-
         let imagenProducto;
-
         if (req.files.length == 0){
             imagenProducto = 'default.jpg'
         } else {
             imagenProducto = req.files[0].filename
         }
-
         db.Product.create({
             name: req.body.name,
             price: req.body.price,
@@ -77,16 +70,13 @@ const productsController =
         res.render('products/productOK');
     },
     editProduct: function(req,res){
-
         Promise.all([db.Product.findByPk(req.params.idProducto),db.Category.findAll(),db.Color.findAll()])
         .then(function(response){
             return res.render('products/editProduct', { producto: response[0], categoria: response[1], color: response[2] })
         })
     },
     modifyProduct: function(req, res, next){
-
         let imagenProducto;
-
         db.Product.findByPk(req.params.idProducto)
         .then(function(response){
 
@@ -96,7 +86,6 @@ const productsController =
                 imagenProducto = response.image
             }
         }).then(function(){
-
             db.Product.update(
                 {
                     name: req.body.name,
@@ -118,14 +107,12 @@ const productsController =
             .catch(function(error){
                 res.send(error)
             })
-
         })
     },
     editProductOK: function(req,res){
         res.render('products/productEditOK');
     },
     confirmDeleteProduct: function(req,res){
-
         db.Product.findByPk(req.params.idProducto)
         .then(function(response){
             return res.render('products/deleteProduct', {
@@ -134,7 +121,6 @@ const productsController =
         })
     },
     deleteProduct: function(req,res){
-
         db.Product.destroy({
             where:{
                 ID: req.params.idProducto
@@ -151,7 +137,6 @@ const productsController =
         res.render('products/productDeleteOK')
     },
     categories: function(req, res){
-
         db.Category.findAll()
         .then(function(result){
             res.render('products/categories', { categorias: result})
@@ -180,7 +165,6 @@ const productsController =
         })
     },
     modifyCategory: function(req, res, next){
-
         db.Category.update(
             {
                 name: req.body.name,
@@ -208,7 +192,6 @@ const productsController =
         })
     },
     deleteCategory: function(req,res){
-
         db.Category.destroy({
             where:{
                 id: req.params.idCategoria
@@ -225,7 +208,6 @@ const productsController =
         res.render('products/categoryDeleteOK')
     },
     colors: function(req, res){
-
         db.Color.findAll()
        .then(function(result){
            res.render('products/colors', {colores: result})
@@ -246,15 +228,12 @@ const productsController =
         res.render('products/colorOK')
     },
     editColor: function(req,res){
-
         db.Color.findByPk(req.params.idColor)
         .then(function(response){
             return res.render('products/editColor', {color: response})
         })
-        
     },
     modifyColor: function(req, res, next){
-
         db.Color.update(
             {
                 name: req.body.name,
@@ -298,7 +277,6 @@ const productsController =
     deleteColorOK: function(req,res){
         res.render('products/colorDeleteOK')
     },
-
 }
 
 module.exports = productsController;

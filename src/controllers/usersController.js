@@ -94,10 +94,10 @@ const usersController =
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
                     image: imagenUsuario,
-                    id_role: 2,
+                    id_role: 1
                     //phone: ,
                     //address: ,
-                    id_city: 20
+                    //id_city: 1
                 })
                 .then(function(result){
                     res.redirect('/users/userOK')
