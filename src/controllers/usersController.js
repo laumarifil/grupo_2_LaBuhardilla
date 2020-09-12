@@ -94,7 +94,7 @@ const usersController =
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
                     image: imagenUsuario,
-                    id_role: 1
+                    id_role: 2
                     //phone: ,
                     //address: ,
                     //id_city: 1
