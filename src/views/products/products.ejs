@@ -30,14 +30,16 @@
       
       <% for(let i = 0; i < producto.length; i++){ %>
         <section class="col-12 col-sm-6 col-md-4 col-lg-3 producto">
-          <article class="productContainer">
-            <div class="imgProductContainer">
-              <img src="images/products/<%= producto[i].image %>" class="img-thumbnail" alt="">
-            </div>
-            <h4> <%= producto[i].name %> </h4>
-            <h5> $ <%= producto[i].price %> </h5>            
-          </article>
-          <a href="/products/detailProduct/<%= producto[i].id %>"><button type="button" class="btn btn-outline-success btn-sm">Detalle Producto</button></a>
+          <a href="/products/detailProduct/<%= producto[i].id %>">
+            <article class="productContainer">
+              <div class="imgProductContainer">
+                <img src="images/products/<%= producto[i].image %>" class="img-thumbnail" alt="">
+              </div>
+              <h4> <%= producto[i].name %> </h4>
+              <h5> $ <%= producto[i].price %> </h5>            
+            </article>
+          </a>
+          <a href="/users/carrito"><button type="button" class="btn btn-outline-success btn-sm">Comprar</button></a>
         </section>               
       <% } %>
         

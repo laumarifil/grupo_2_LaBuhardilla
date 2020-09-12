@@ -100,7 +100,7 @@ const usersController =
                     //id_city: 1
                 })
                 .then(function(result){
-                    res.redirect('/users/userOK')
+                    res.redirect('/users/login')
                 })
                 .catch(function(error){
                     res.send(error)

@@ -69,10 +69,10 @@ window.addEventListener('load', function() {
             errorPassword.innerText = (errores.password) ? errores.password : '';
             errorRePassword.innerText = (errores.repassword) ? errores.repassword : '' ;
         } else {
-            formulario.submit()
+            Swal.fire('Usuario creado OK')
+            .then(function(response){
+                formulario.submit();
+            })
         }
-
     })
-
-
 })
