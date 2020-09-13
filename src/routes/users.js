@@ -31,7 +31,7 @@ router.get('/profile/:idUsuario', usersController.detailUser)
 /* Edicion de usuarios */
 router.get('/editUser/:idUsuario', usersController.editUser);
 router.put('/editUser/:idUsuario',usersMulterMiddleware.any(), usersController.modifyUser);
-router.get('/userEditOK', usersController.editUserOK);
+
 
 
 module.exports = router;

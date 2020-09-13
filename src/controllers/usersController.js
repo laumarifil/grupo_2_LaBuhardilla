@@ -134,7 +134,7 @@ const usersController =
                 })
             })
         },
-        modifyUser: function(req, res, next){
+        modifyUser: function(req, res){
     
             db.User.update(
                 {
@@ -148,16 +148,12 @@ const usersController =
                     }
                 })
             .then(function(response){
-                return res.render('users/userEditOK')
+                return res.render('users/profile')
             })
             .catch(function(error){
                 res.send(error)
             })
-        },
-        editUserOK: function(req,res){
-            res.render('users/userEditOK');
-        },
-
+        }
     }
     
     module.exports = usersController;
