@@ -11,14 +11,14 @@ const operator = db.Sequelize.Op;
 
 const productsController =
 {
-    products: function(req,res, next){
+    products: function(req,res){
 
         db.Product.findAll()
          .then(function(response){
              return res.render('products/products', {producto: response });           
          })
     },
-    detailProduct: function(req,res, next){
+    detailProduct: function(req,res){
         db.Product.findByPk(req.params.idProducto, {include: {all: true} })
         .then(function(response){            
              return res.render('products/detailProduct', {producto: response });    
@@ -49,7 +49,7 @@ const productsController =
             res.render('products/newProduct' , { categoria : response[0], color: response[1] })
         })
     },
-    createProduct: function(req,res, next){
+    createProduct: function(req,res){
         let imagenProducto;
         if (req.files.length == 0){
             imagenProducto = 'default.jpg'
@@ -66,7 +66,7 @@ const productsController =
             stock: req.body.stock
         })
         .then(function(response){
-            res.redirect('/products/products')
+            res.redirect('products/products')
         })
         .catch(function(error){
             res.send(error)
@@ -79,7 +79,7 @@ const productsController =
             return res.render('products/editProduct', { producto: response[0], categoria: response[1], color: response[2] })
         })
     },
-    modifyProduct: function(req, res, next){
+    modifyProduct: function(req, res){
         let imagenProducto;
         db.Product.findByPk(req.params.idProducto)
         .then(function(response){
@@ -162,7 +162,7 @@ const productsController =
             return res.render('products/editCategory', {categoria: response})
         })
     },
-    modifyCategory: function(req, res, next){
+    modifyCategory: function(req, res){
         db.Category.update(
             {
                 name: req.body.name,
@@ -225,7 +225,7 @@ const productsController =
             return res.render('products/editColor', {color: response})
         })
     },
-    modifyColor: function(req, res, next){
+    modifyColor: function(req, res){
         db.Color.update(
             {
                 name: req.body.name,

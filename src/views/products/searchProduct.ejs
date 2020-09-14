@@ -12,25 +12,28 @@
   <%- include("../partials/header")%>    
   
   <div class="container">
-    <div class="row productos">
+    <div class="row productos">     
       
-      <div class="col-12">
-        <h3>Resultados de la busqueda</h3>
-        <br>      
-        <a href="/products/newProduct"><button type="button" class="btn btn-success">Alta de Producto</button></a><br><br>
+      <div class="col-12" style='margin-bottom: 10px;'>
+        <h4>Resultados de la busqueda</h4>
+        <div class="btn-group" role="group" aria-label="Basic example">
+
+          <a href="/products"><button type="button" class="btn btn-success btn-sm">Todos los productos</button></a>
+          
+        </div>
       </div>
       
       <% for(let i = 0; i < producto.length; i++){ %>
-        <section class="col-12 col-sm-6 col-md-4 col-lg-3 producto">
-          <article class="productContainer">
-            <div class="imgProductContainer">
-              <img src="images/products/<%= producto[i].image %>" class="img-thumbnail" alt="">
+        <a href="/products/detailProduct/<%= producto[i].id %>">
+          <div class="card col-3 border-light" style="width: 18em">
+            <img src="/images/products/<%= producto[i].image %>" class="card-img-top" alt="">
+            <div class="card-body">
+              <h6 class="card-title" style="color:black;font-size: 16px;"><%= producto[i].name %></h6>
+              <p style="color:black;font-size: 20px;">$<%= producto[i].price %></p>            
+              <a href="/users/carrito" style="font-size: 15px;" class="btn btn-success">Agregar al carrito</a>
             </div>
-            <h4> <%= producto[i].name %> </h4>
-            <h5> $ <%= producto[i].price %> </h5>            
-          </article>
-          <a href="/products/detailProduct/<%= producto[i].id %>"><button type="button" class="btn btn-outline-success btn-sm">Detalle Producto</button></a>
-        </section>               
+          </div>
+          </a>             
       <% } %>
         
       </div>

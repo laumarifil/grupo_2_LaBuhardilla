@@ -6,9 +6,12 @@ var logger = require('morgan');
 const session = require('express-session');
 const setUserByCookieMiddleware = require('../src/middlewares/setUserByCookie');
 
-var indexRouter = require('./routes/index');
+
+const indexRouter = require('./routes/index');
+const cartRouter = require('./routes/cart')
 const productsRouter = require('./routes/products')
-var usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
+
 
 var app = express();
 
@@ -32,8 +35,10 @@ app.use(setUserByCookieMiddleware);
 
 
 app.use('/', indexRouter);
+app.use('/cart', cartRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
