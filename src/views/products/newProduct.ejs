@@ -15,7 +15,7 @@
                     <h4 class="products-title">Formulario de carga de productos</h4>
                 </div>
                 <div class="col-12 products-wrapper">
-                    <form action="/products/newProduct" method="post" enctype="multipart/form-data">
+                    <form id='cargaProducto' action="/products/newProduct" method="post" enctype="multipart/form-data">
                         <div class="row product-detail">
                             <div class="col-12 col-md-6">
                                 <label for="name" class="form-label">Nombre del producto:</label>
@@ -66,6 +66,8 @@
                 </div>    
             </div>
         </section>
+        
+        <script src="/javascripts/productOK.js"></script>
         
         <%- include("../partials/footer")%>
 

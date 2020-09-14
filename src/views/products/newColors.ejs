@@ -18,7 +18,7 @@
 
                     <h4>Agregar nuevo color</h4>
                     
-                    <form action="/products/colors/newColor" method="POST">
+                    <form id='nuevoColor' action="/products/colors/newColor" method="POST">
 
                         <input type="text" placeholder="Escribí el nombre del color" class="nombre" name="name">
 
@@ -28,6 +28,8 @@
                 </div>
             </div>
         </div>
+
+        <script src="/javascripts/colorOK.js"></script>
 
         <%- include("../partials/footer")%>
         

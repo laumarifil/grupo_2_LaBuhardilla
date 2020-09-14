@@ -19,7 +19,7 @@
                     <h4>Modifique su categoria</h4>
                     
                     
-                    <form action="/products/categories/editCategory/<%= categoria.id %>?_method=PUT" method="POST">
+                    <form id='editarCategoria' action="/products/categories/editCategory/<%= categoria.id %>?_method=PUT" method="POST">
 
                         <input type="text" placeholder="Escribí el nombre de la categoría" class="nombre" name="name" value="<%= categoria.name %>">
 
@@ -31,6 +31,8 @@
                 </div>
             </div>
         </div>
+
+        <script src="/javascripts/editCategoryOK.js"></script>
 
         <%- include("../partials/footer")%>
         

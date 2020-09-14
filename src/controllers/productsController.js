@@ -66,15 +66,13 @@ const productsController =
             stock: req.body.stock
         })
         .then(function(response){
-            res.redirect('/products/productOK')
+            res.redirect('/products/products')
         })
         .catch(function(error){
             res.send(error)
         })
     },
-    newProductOK: function(req,res){
-        res.render('products/productOK');
-    },
+
     editProduct: function(req,res){
         Promise.all([db.Product.findByPk(req.params.idProducto),db.Category.findAll(),db.Color.findAll()])
         .then(function(response){
@@ -108,20 +106,18 @@ const productsController =
                     }
                 })
             .then(function(response){
-                return res.render('products/productEditOK')
+                return res.render('products/products')
             })
             .catch(function(error){
                 res.send(error)
             })
         })
     },
-    editProductOK: function(req,res){
-        res.render('products/productEditOK');
-    },
+   
     confirmDeleteProduct: function(req,res){
         db.Product.findByPk(req.params.idProducto)
         .then(function(response){
-            return res.render('products/deleteProduct', {
+            return res.render('products/products', {
                 producto: response
             })
         })
@@ -133,15 +129,13 @@ const productsController =
             }
         })
         .then(function(response){
-            return res.redirect('/products/productDeleteOK')
+            return res.redirect('/products/products')
         })
         .catch(function(error){
             res.send(error)
         })
     },
-    deleteProductOK: function(req,res){
-        res.render('products/productDeleteOK')
-    },
+   
     categories: function(req, res){
         db.Category.findAll()
         .then(function(result){
@@ -157,12 +151,10 @@ const productsController =
             name: req.body.name
         })
         .then(function(result){
-            res.redirect('/products/categories/categoryOK')
+            res.redirect('/products/categories')
         })
     },
-    categoryOK: function(req,res){
-        res.render('products/categoryOK');
-    },
+ 
     editCategory: function(req,res){
 
         db.Category.findByPk(req.params.idCategoria)
@@ -181,15 +173,13 @@ const productsController =
                 }
             })
         .then(function(response){
-            return res.redirect('/products/categories/categoryEditOK')
+            return res.redirect('/products/categories')
         })
         .catch(function(error){
             res.send(error)
         })
     },
-    editCategoryOK: function(req,res){
-        res.render('products/categoryEditOK');
-    },
+ 
     confirmDeleteCategory: function(req,res){
 
         db.Category.findByPk(req.params.idCategoria)
@@ -204,15 +194,13 @@ const productsController =
             }
         })
         .then(function(response){
-            return res.redirect('/products/categories/categoryDeleteOK')
+            return res.redirect('/products/categories')
         })
         .catch(function(error){
             res.send(error)
         })
     },
-    deleteCategoryOK: function(req,res){
-        res.render('products/categoryDeleteOK')
-    },
+  
     colors: function(req, res){
         db.Color.findAll()
        .then(function(result){
@@ -227,12 +215,10 @@ const productsController =
             name: req.body.name
         })
         .then(function(result){
-            res.redirect('/products/colors/colorOK')
+            res.redirect('/products/colors')
         })
     },
-    colorOK: function(req, res){
-        res.render('products/colorOK')
-    },
+
     editColor: function(req,res){
         db.Color.findByPk(req.params.idColor)
         .then(function(response){
@@ -250,15 +236,13 @@ const productsController =
                 }
             })
         .then(function(response){
-            return res.redirect('/products/colors/colorEditOK')
+            return res.redirect('/products/colors')
         })
         .catch(function(error){
             res.send(error)
         })
     },
-    editColorOK: function(req,res){
-        res.render('products/colorEditOK');
-    },
+
     confirmDeleteColor: function(req,res){
 
         db.Color.findByPk(req.params.idColor)
@@ -274,15 +258,13 @@ const productsController =
             }
         })
         .then(function(response){
-            return res.redirect('/products/colors/colorDeleteOK')
+            return res.redirect('/products/colors')
         })
         .catch(function(error){
             res.send(error)
         })
     },
-    deleteColorOK: function(req,res){
-        res.render('products/colorDeleteOK')
-    },
+   
 }
 
 module.exports = productsController;

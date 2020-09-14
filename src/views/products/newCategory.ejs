@@ -19,7 +19,7 @@
                     <h4>Agregar categoria nueva</h4>
                     
                     
-                    <form action="/products/categories/newCategory" method="POST">
+                    <form id='nuevaCategoria' action="/products/categories/newCategory" method="POST">
 
                         <input type="text" placeholder="Escribí el nombre de la categoría" class="nombre" name="name">
 
@@ -29,6 +29,8 @@
                 </div>
             </div>
         </div>
+
+        <script src="/javascripts/categoryOK.js"></script>
 
         <%- include("../partials/footer")%>
         

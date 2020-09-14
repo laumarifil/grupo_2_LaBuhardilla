@@ -18,7 +18,7 @@
 
                     <h4>Edite el color</h4>
                     
-                    <form action="/products/colors/editColor/<%= color.id %>?_method=PUT" method="POST">
+                    <form id='editarColor' action="/products/colors/editColor/<%= color.id %>?_method=PUT" method="POST">
 
                         <input type="text" placeholder="Escribí el nombre del color" class="nombre" name="name" value="<%= color.name %>">
 
@@ -30,6 +30,8 @@
                 </div>
             </div>
         </div>
+
+        <script src="/javascripts/editColorOK.js"></script>
 
         <%- include("../partials/footer")%>
         
