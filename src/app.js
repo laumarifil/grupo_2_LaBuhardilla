@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 const setUserByCookieMiddleware = require('../src/middlewares/setUserByCookie');
-
+const { allowedNodeEnvironmentFlags } = require('process');
 
 const indexRouter = require('./routes/index');
 const cartRouter = require('./routes/cart')

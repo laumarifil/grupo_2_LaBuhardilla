@@ -11,7 +11,6 @@ window.addEventListener('load', function() {
         Swal.fire('Producto cargado correctamente')
         .then(function(response){
         formulario.submit();
-        
         })
     })
 })

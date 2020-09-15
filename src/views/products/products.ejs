@@ -31,22 +31,24 @@
           <img src="images/products/<%= producto[i].image %>" class="card-img-top" alt="">
           <div class="card-body">
             <h6 class="card-title" style="color:black;font-size: 16px;"><%= producto[i].name %></h6>
-            <p style="color:black;font-size: 20px;">$<%= producto[i].price %></p>            
+            <p style="color:black;font-size: 20px;">$ <%= producto[i].price %></p>            
             <a></a>
             <form id='carrito'>
               <input type="hidden" value="<%= producto[i].id %>" id="" name="id_producto">
               <button class="btn btn-success" style="font-size: 15px;" type="submit">+ Agregar al carrito</button>
-          </form>           
+            </form>           
           </div>
         </div>
         </a>
         
-        <% } %>        
+        <% } %> 
+        
       </div>
+      <a href="" onclick="window.scroll(0,0);"><button class="btn btn-success" style="font-size: 15px; margin-bottom: 5px;">Volver hacia arriba</button></a>
     </div>
 
     <script src="/javascripts/cart.js"></script>
-
+   
     <%- include("../partials/footer")%>
     
     <%- include("../partials/scripts")%>

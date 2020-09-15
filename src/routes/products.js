@@ -66,11 +66,5 @@ router.put('/colors/editColor/:idColor', productsController.modifyColor);
 router.get('/colors/deleteColor/:idColor', productsController.confirmDeleteColor);
 router.delete('/colors/deleteColor/:idColor', productsController.deleteColor);
 
-/* Rutas de carrito */
-
-router.get('/cart', function(req, res){
-    res.send('hola')
-});
-
 
 module.exports = router;

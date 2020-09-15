@@ -17,45 +17,46 @@
             <h4 class="col-12">Listado de Categorias</h4>
             
             <% for(let i = 0; i < categorias.length; i++){ %>
-            <section class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <article>
-
-                    <h6> ID: <%= categorias[i].id %> </h6>       
-                    <h6> Nombre: <%= categorias[i].name %> </h6>
-
-                </article>
-
-                <article>
-
-                    <a href="/products/categories/editCategory/<%= categorias[i].id %>"><button type="button" class="btn btn-outline-success btn-sm">Modificar</button></a>
-                    <a href="/products/categories/deleteCategory/<%= categorias[i].id %>"><button type="button" class="btn btn-outline-success btn-sm">Eliminar</button></a>
-
-                </article>
-                
-            </section>
-            <% } %>
-
-            <br>
-            <a href="/products">Ir a la lista de producto</a>
-                        
-            
-        </div>
-    </div>
-    <br>
-
-    <div class="container">
-        <div class="row">
-
-            <a href="/products/categories/newCategory"><button type="button" class="btn btn-outline-success btn-sm">Agregar nueva categoria</button></a>
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group-flush">
+                        <li class="list-group"><%= categorias[i].name %>
                             
-        
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                
+                                <a href="/products/categories/editCategory/<%= categorias[i].id %>"><button type="button" style='margin-left: 150px; margin-bottom: 9px;' class="btn btn-primary btn-sm">modificar</button></a>
+                                
+                                <a href="/products/categories/deleteCategory/<%= categorias[i].id %>"><button type="button" class="btn btn-sm btn-success">Eliminar</button></a>
+                                
+                            </div>
+                            
+                        </li>  
+                    </ul>
+                    
+                </div>
+                
+                <% } %>
+                
+                
+                <a href="/products">Ir a la lista de producto</a>
+                
+                
+            </div>
         </div>
-    </div>
+        <br>
+        
+        <div class="container">
+            <div class="row">
+                
+                <a href="/products/categories/newCategory"><button type="button" class="btn btn-outline-success btn-sm">Agregar nueva categoria</button></a>
+                
+                
+            </div>
+        </div>
+        
+        <%- include("../partials/footer")%>
+        
+        <%- include("../partials/scripts")%>
+        
+    </body>
     
-    <%- include("../partials/footer")%>
-    
-    <%- include("../partials/scripts")%>
-    
-</body>
-
-</html>
+    </html>

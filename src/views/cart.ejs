@@ -2,66 +2,63 @@
 <html lang="en">
 
 <head>
-  
-  <%- include("../partials/head")%>
-  
+    
+    <%- include("partials/head")%>
+    
 </head>
 
 <body>
-  
-  <%- include("../partials/header")%>    
-  
-  <div class="container">
-    <h1 class="my-5">Tu carrito</h1>
-    <div class="table-responsive">
-        <table class="table">
-            <tr>
-                <th>Imagen</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Borrar</th>
-            </tr>
-                <% productos.forEach(producto => { %>
-                    <tr>
-                        <td>
-                            <img style="width: 80px; display: inline-block" src="/images/<%=producto.imagen%>" alt="">
-                        </td>
-                        <td>
-                            <h4><%=producto.nombre%></h4>
-                            <ul>
-                                <li>Ad lorem ipsum</li>
-                                <li>Ad lorem ipsum</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <%=producto.cantidad%>
-                        </td>
-                        <td>
-                            $ <%=producto.precio%>
-                        </td>
-                        <td>
-                            <form action="">
-                                <input type="hidden" value="" name="" id="">
-                                <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                <% }) %>
-                
-        </table>
-      </div>
-</div>
-
-
-
-
     
+    <%- include("partials/header")%>    
+    
+    <div class="container">
+        <h1 class="my-5">Tu carrito</h1>
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Borrar</th>
+                </tr>
+                    <% productos.forEach(producto => { %>
+                        <tr>
+                            <td>
+                                <img style="width: 80px; display: inline-block" src="/images/products/<%=producto.image%>" alt="">
+                            </td>
+                            <td>
+                                <h4><%=producto.name %></h4>
+                               
+                            </td>
+                            <td>
+                                <%=producto.cantidad%>
+                            </td>
+                            <td>
+                                $ <%=producto.price %>
+                            </td>
+                            <td>
+                                <form action="">
+                                    <input type="hidden" value="" name="" id="">
+                                    <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                    
+            </table>
+          </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    <%- include("./partials/footer")%>
+    
+    <%- include("./partials/scripts")%>
+    
+</body>
 
-    <%- include("../partials/footer")%>
-    
-    <%- include("../partials/scripts")%>
-    
-  </body>
-  
-  </html>
+</html>

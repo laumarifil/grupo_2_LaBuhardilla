@@ -8,7 +8,9 @@ window.addEventListener('load', () =>{
     for (const form of forms) {
         form.addEventListener('submit', e => {
             e.preventDefault();
-            console.log()
+
+            console.log('hola')
+
             let url = 'http://localhost:3000/cart/add';
             let idProducto = form.children[0].value; // El valor id del producto (input)
 
@@ -23,11 +25,7 @@ window.addEventListener('load', () =>{
                 .then(response => response.json())
                 .then(data => {
                     cart.innerText = data;
-                    swal({
-                        title: "Se agregó el producto al carrito",
-                        icon: "success",
-                        button: "Gracias bro",
-                    });
+                    Swal.fire('producto agregado al carrito')
             });
 
         })
