@@ -14,6 +14,10 @@
     <div class="container">
         <h1 class="my-5">Tu carrito</h1>
         <div class="table-responsive">
+            <% if( productosCarrito.length < 1 ){ %>
+                <h5>Su carrito está vacío.</h5>
+            <% }else{ %>
+
             <table class="table">
                 <tr>
                     <th>Imagen</th>
@@ -22,7 +26,7 @@
                     <th>Precio</th>
                     <th>Borrar</th>
                 </tr>
-                    <% productos.forEach(producto => { %>
+                    <% productosCarrito.forEach(producto => { %>
                         <tr>
                             <td>
                                 <img style="width: 80px; display: inline-block" src="/images/products/<%=producto.image%>" alt="">
@@ -47,6 +51,7 @@
                     <% }) %>
                     
             </table>
+            <% } %>
           </div>
     </div>
     

@@ -19,14 +19,25 @@ const productsController =
          })
     },
     detailProduct: function(req,res){
-        db.Product.findByPk(req.params.idProducto, {include: {all: true} })
+ 
+            Promise.all([db.Product.findByPk(req.params.idProducto, {include: {all: true}}), db.Product.findAll()])
+            .then(function(response){
+            return res.render('products/detailProduct' , { producto : response[0], productos: response[1] })
+        })
+
+     
+        
+
+
+
+     /*   db.Product.findByPk(req.params.idProducto, {include: {all: true} })
         .then(function(response){            
              return res.render('products/detailProduct', {producto: response });    
-         })
+         }) */
         .catch(function(error){
             res.send(error)
         }) 
-        },
+    },
     searchProduct: function(req, res){
         db.Product.findAll(
             { 
@@ -66,7 +77,7 @@ const productsController =
             stock: req.body.stock
         })
         .then(function(response){
-            res.redirect('products/products')
+            return res.redirect('/products')
         })
         .catch(function(error){
             res.send(error)
@@ -106,7 +117,7 @@ const productsController =
                     }
                 })
             .then(function(response){
-                return res.render('products/products')
+                return res.redirect('/products')
             })
             .catch(function(error){
                 res.send(error)
@@ -117,7 +128,7 @@ const productsController =
     confirmDeleteProduct: function(req,res){
         db.Product.findByPk(req.params.idProducto)
         .then(function(response){
-            return res.render('products/products', {
+            return res.render('products/deleteProduct', {
                 producto: response
             })
         })
@@ -129,7 +140,7 @@ const productsController =
             }
         })
         .then(function(response){
-            return res.redirect('/products/products')
+            return res.redirect('/products')
         })
         .catch(function(error){
             res.send(error)

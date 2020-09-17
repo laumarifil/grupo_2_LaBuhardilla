@@ -5,9 +5,11 @@ module.exports = {
 
         console.log(req.session.cart)
 
-        
+        if(typeof req.session.cart == 'undefined') {
+            req.session.cart = []
+        }
 
-        res.render('cart', { productos: req.session.cart});
+        res.render('cart', { productosCarrito: req.session.cart});
 
        },
     add: async function(req, res) {

@@ -65,23 +65,16 @@
 
                     <article class="articulosTambien">
                     
-                    
-                        <a href="/products/detailProduct/<%= producto.id %>">
+                    <% for (let i = 0; i < 2; i++) { %>
+                     
+                        <a href="/products/detailProduct/<%= productos[i].id %>">
                             <article class="col-12 col-md-6 articuloTambien">
-                                <img class="imagenSecundaria img-thumbnail" src="/images/products/<%= producto.image %>">
-                                <h5><%= producto.name %></h5>
-                                <h6><%= producto.price %></h6>
+                                <img class="imagenSecundaria img-thumbnail" src="/images/products/<%= productos[i].image %>">
+                                <h5><%= productos[i].name %></h5>
+                                <h6><%= productos[i].price %></h6>
                             </article>
                         </a>
-                        
-                        <a href="/products/detailProduct/<%= producto.id %>">
-                            <article class="col-12 col-md-6 articuloTambien">
-                                <img class="imagenSecundaria img-thumbnail" src="/images/products/<%= producto.image %>">
-                                <h5><%= producto.name %></h5>
-                                <h6><%= producto.price %></h6>
-                            </article>
-                        </a>
-
+                    <% } %>
                     </article>
 
                 </section>
