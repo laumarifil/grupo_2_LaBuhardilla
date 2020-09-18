@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const cartRouter = require('./routes/cart')
 const productsRouter = require('./routes/products')
 const usersRouter = require('./routes/users');
+//const esAdmin = require('./middlewares/adminMiddleware');
 
 
 var app = express();
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(session({secret:'Frase secreta'}));
 app.use(cookieParser());
 app.use(setUserByCookieMiddleware);
+//app.use(esAdmin());
 
 
 app.use('/', indexRouter);

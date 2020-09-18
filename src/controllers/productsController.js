@@ -25,10 +25,6 @@ const productsController =
             return res.render('products/detailProduct' , { producto : response[0], productos: response[1] })
         })
 
-     
-        
-
-
 
      /*   db.Product.findByPk(req.params.idProducto, {include: {all: true} })
         .then(function(response){            
@@ -164,6 +160,16 @@ const productsController =
         .then(function(result){
             res.redirect('/products/categories')
         })
+    },
+    productsDeco: function(req,res){
+        db.Product.findAll({
+            where: {
+                id_category: 1
+            }
+        })
+         .then(function(response){
+            return res.render('products/productsDeco', {producto: response});           
+         })
     },
  
     editCategory: function(req,res){

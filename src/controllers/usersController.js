@@ -58,11 +58,15 @@ const usersController =
                     for(let i = 0 ; i<usuarios.length; i++){
 
                         if(usuarios[i].email == req.body.email && bcrypt.compareSync(req.body.loginPassword, usuarios[i].password)) {                   
-                            req.session.logueado = usuarios[i].email ;
+                            req.session.logueado = {
+                                email: usuarios[i].email,
+                                id_role: usuarios[i].id_role,
+                            }
                             
                             if(req.body.remember){
                                 res.cookie('userCookie', usuarios[i].email , { maxAge: 1000 * 60 * 24 })
                             }
+                            
                             return res.redirect('/');
                         }
                     }
@@ -94,7 +98,7 @@ const usersController =
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
                     image: imagenUsuario,
-                    id_role: 2
+                    id_role: 1
                     //phone: ,
                     //address: ,
                     //id_city: 1

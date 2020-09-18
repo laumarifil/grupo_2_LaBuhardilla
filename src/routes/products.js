@@ -13,6 +13,10 @@ const productsMulterMiddleware = require('../middlewares/productsMulterMiddlewar
 router.get('/', productsController.products);
 router.get('/detailProduct/:idProducto', productsController.detailProduct);
 
+/* Productos de Categoría Deco */
+router.get('/productsDeco', productsController.productsDeco);
+
+
 /* Busqueda de productos */
 router.post('/searchProduct/', productsController.searchProduct);
 
@@ -37,7 +41,6 @@ router.get('/categories', productsController.categories);
 /* Alta de Categorias de productos */
 router.get('/categories/newCategory', productsController.newCategory);
 router.post('/categories/newCategory', productsController.createCategory);
-
 
 /* Modificacion de Categorias de productos */
 router.get('/categories/editCategory/:idCategoria', productsController.editCategory);

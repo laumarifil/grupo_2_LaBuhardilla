@@ -15,24 +15,15 @@
     <div class="row productos">
       
       <div class="col-12" style='margin-bottom: 10px;'>
-        <h4> Listado de productos</h4>
-        <% if(typeof esAdmin != 'undefined' && esAdmin == 1){ %>
-                 
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <a href="/products/newProduct"><button type="button" class="btn btn-success btn-sm">Alta de Producto</button></a>
-          <a href="/products/categories"><button type="button" class="btn btn-success btn-sm">Categorias</button></a>
-          <a href="/products/colors"><button type="button" class="btn btn-success btn-sm">Colores</button></a>
-        </div>
-
-        <% } %> 
-
+        <h4> Productos de Deco</h4>
+       
       </div>
       
       
       <% for(let i = 0; i < producto.length; i++){ %>
-        <a href="/products/detailProduct/<%= producto[i].id %>">
+        <a href="/products/productsDeco/<%= producto[i].id %>">
         <div class="card col-3 border-light" style="width: 18em">
-          <img src="images/products/<%= producto[i].image %>" class="card-img-top" alt="">
+          <img src="/images/products/<%= producto[i].image %>" class="card-img-top" alt="">
           <div class="card-body">
             <h6 class="card-title" style="color:black;font-size: 16px;"><%= producto[i].name %></h6>
             <p style="color:black;font-size: 20px;">$ <%= producto[i].price %></p>            
