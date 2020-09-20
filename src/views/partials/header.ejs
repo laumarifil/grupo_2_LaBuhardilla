@@ -11,11 +11,15 @@
         <a href="/productsMuebles">Muebles</a>
         <a href="/productsIluminación">Iluminación</a>
         <a href="/productsWallArt">Wall Art</a>
-        <% if(typeof esAdmin != 'undefined' && esAdmin == true){ %>
+       
+       
+       
+       <% if(typeof locals.esAdmin != 'undefined' && locals.esAdmin == 1){ %> 
           <a href="/users">Usuarios</a>
 
-        <% } %> 
+      <% } %> 
         
+       
       </div>
 
       <div id="main">       
@@ -31,12 +35,19 @@
       <!-- Login/Cart -->
       <ul class="usuario nav flex-column " type="none">
         
-        <li><a href="/users/login"><i class="far fa-user"></i>Mi cuenta </a></li>
+        <% if(typeof locals.session != 'undefined') { %> 
+        <li><a href="/users/login"><i class="far fa-user"></i> <%= locals.session.name %> </a></li>
+        <% } else { %>
+          <li><a href="/users/login"><i class="far fa-user"></i>Iniciar</a></li>
+        <% } %>          
         
-        <li><a href="/cart"><i class="fas fa-shopping-cart"></i> </a><span style="color:  #77cc8a;font-size: 20px;" id="myButtonCart"></span></li>
-
+        <% if(typeof locals.session != 'undefined') { %>
         <li><a href="/users/logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
- 
+        <% } else { %>
+          <li><a href="/users/registration"><i class="far fa-user"></i>Registro</a></li>
+        <% } %>
+
+        <li><a href="/cart"><i class="fas fa-shopping-cart"></i> <%= locals.cartNumber %> </a><span style="color:  #77cc8a;font-size: 20px;" id="myButtonCart"></span> <li>
       </ul>
          
 

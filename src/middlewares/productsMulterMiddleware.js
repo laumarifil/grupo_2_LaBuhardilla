@@ -2,8 +2,6 @@ const multer = require('multer');
 const path = require('path');
 
 
-
-
 /* Product Image Upload */
 var storage = multer.diskStorage({
     destination: function(req, file, cb){

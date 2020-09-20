@@ -3,7 +3,7 @@ const db = require('../database/models');
 module.exports = {
     get: function(req, res) {   
 
-        console.log(req.session.cart)
+        
 
         if(typeof req.session.cart == 'undefined') {
             req.session.cart = []
@@ -29,15 +29,12 @@ module.exports = {
         if(!check) {
             let producto = await db.Product.findByPk(req.body.id_producto);
 
-            console.log(req.body.id_producto)
-
-
             req.session.cart.push({
                 ...producto.dataValues,
                 cantidad: (req.body.cantidad) ? Number(req.body.cantidad) : 1
                 
             })
-            console.log(req.session.cart)
+            
         }
 
         return res.json(req.session.cart.length);

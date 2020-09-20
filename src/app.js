@@ -4,25 +4,32 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
-const setUserByCookieMiddleware = require('../src/middlewares/setUserByCookie');
+const setUserByCookieMiddleware = require('./middlewares/setUserByCookie');
 const { allowedNodeEnvironmentFlags } = require('process');
+
+let esAdminMiddleware = require('./middlewares/adminMiddleware');
+let sessionMiddleware = require('./middlewares/sessionMiddleware');
+let cartLengthMiddleware = require('./middlewares/cartLengthMiddleware');
 
 const indexRouter = require('./routes/index');
 const cartRouter = require('./routes/cart')
 const productsRouter = require('./routes/products')
 const usersRouter = require('./routes/users');
-//const esAdmin = require('./middlewares/adminMiddleware');
+
 
 
 var app = express();
 
 // Para usar metodos PUT y DELETE
 const methodOverride = require('method-override');
+
+
 app.use(methodOverride('_method'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 
 app.use(methodOverride('_method'))
 app.use(logger('dev'));
@@ -33,8 +40,9 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(session({secret:'Frase secreta'}));
 app.use(cookieParser());
 app.use(setUserByCookieMiddleware);
-//app.use(esAdmin());
-
+app.use(esAdminMiddleware);
+app.use(sessionMiddleware);
+app.use(cartLengthMiddleware);
 
 app.use('/', indexRouter);
 app.use('/cart', cartRouter);

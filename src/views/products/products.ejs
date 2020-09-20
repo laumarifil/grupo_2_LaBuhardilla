@@ -16,15 +16,19 @@
       
       <div class="col-12" style='margin-bottom: 10px;'>
         <h4> Listado de productos</h4>
-        <% if(typeof esAdmin != 'undefined' && esAdmin == 1){ %>
-                 
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <a href="/products/newProduct"><button type="button" class="btn btn-success btn-sm">Alta de Producto</button></a>
-          <a href="/products/categories"><button type="button" class="btn btn-success btn-sm">Categorias</button></a>
-          <a href="/products/colors"><button type="button" class="btn btn-success btn-sm">Colores</button></a>
-        </div>
+        
+        <% if(typeof locals.esAdmin != 'undefined' && locals.esAdmin == 1){ %> 
+          
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="/products/newProduct"><button type="button" class="btn btn-success btn-sm">Alta de Producto</button></a>
+            <a href="/products/categories"><button type="button" class="btn btn-success btn-sm">Categorias</button></a>
+            <a href="/products/colors"><button type="button" class="btn btn-success btn-sm">Colores</button></a>
+          </div>
+  
 
-        <% } %> 
+        <% } %>         
+        
+        
 
       </div>
       

@@ -11,15 +11,31 @@
     
     <%- include("../partials/header")%>
 
-    <h1>Perfil de usuario</h1>
-    <h2>SITIO WEB EN PROCESO DE CONSTRUCCION<i class="fas fa-tools"></i></h2>
-    <ul>
-    <li><a href="/users/carrito">Ir al carrito</a></li>
-    <br>
-    <li><a href="/users/registration">Registrate</a></li>
-    <br>
-    <li><a href="javascript:history.back()"> Volver Atrás</a></li>
-    </ul>
+
+    <div class="container">
+      <h3>Perfil de <%= usuario.name + usuario.surname %> </h3>
+
+      <div class="card" style="width: 18rem;">
+        <img src="/images/users/<%= usuario.image %>" class="img-thumbnail" alt="">
+        <div class="card-body">
+          <h5 class="card-title"><%= usuario.name + usuario.surname %></h5>
+          <p class="card-text"><%= usuario.email %></p>
+          <a href="/" class="btn btn-success">Modificar datos</a>
+        </div>
+      </div>
+
+      <a href="javascript:history.back()"><button class="btn btn-success" style="font-size: 15px; margin-bottom: 5px; margin-top: 5px;">Volver atrás</button></a>
+
+    </div>
+
+      
+     
+    
+
+
+
+
+
     <%- include("../partials/footer")%>
 
     <%- include("../partials/scripts")%>

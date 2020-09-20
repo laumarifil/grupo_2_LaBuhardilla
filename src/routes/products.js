@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const productsController = require('../controllers/productsController');
 const authMiddleware = require('../middlewares/authMiddleware');
+const roleMiddleware = require('../middlewares/roleMiddleware');
 
 const db = require('../database/models');
 const operator = db.Sequelize.Op; 
@@ -21,53 +22,53 @@ router.get('/productsDeco', productsController.productsDeco);
 router.post('/searchProduct/', productsController.searchProduct);
 
 /* Alta de productos */
-router.get('/newProduct', authMiddleware , productsController.newProduct);
-router.post('/newProduct', authMiddleware , productsMulterMiddleware.any(), productsController.createProduct);
+router.get('/newProduct',roleMiddleware , productsController.newProduct);
+router.post('/newProduct',roleMiddleware , productsMulterMiddleware.any(), productsController.createProduct);
 
 
 /* Modificacion de productos */
-router.get('/editProduct/:idProducto', authMiddleware , productsController.editProduct);
-router.put('/editProduct/:idProducto', authMiddleware , productsMulterMiddleware.any(), productsController.modifyProduct);
+router.get('/editProduct/:idProducto', roleMiddleware , productsController.editProduct);
+router.put('/editProduct/:idProducto', roleMiddleware , productsMulterMiddleware.any(), productsController.modifyProduct);
 
 
 /* Baja de productos */
-router.get('/deleteProduct/:idProducto',authMiddleware, productsController.confirmDeleteProduct);
-router.delete('/deleteProduct/:idProducto', authMiddleware ,productsController.deleteProduct);
+router.get('/deleteProduct/:idProducto', roleMiddleware, productsController.confirmDeleteProduct);
+router.delete('/deleteProduct/:idProducto', roleMiddleware, productsController.deleteProduct);
 
 
 /* Listado de Categorias de productos */
 router.get('/categories', productsController.categories);
 
 /* Alta de Categorias de productos */
-router.get('/categories/newCategory', productsController.newCategory);
-router.post('/categories/newCategory', productsController.createCategory);
+router.get('/categories/newCategory', roleMiddleware, productsController.newCategory);
+router.post('/categories/newCategory', roleMiddleware, productsController.createCategory);
 
 /* Modificacion de Categorias de productos */
-router.get('/categories/editCategory/:idCategoria', productsController.editCategory);
-router.put('/categories/editCategory/:idCategoria', productsController.modifyCategory);
+router.get('/categories/editCategory/:idCategoria', roleMiddleware, productsController.editCategory);
+router.put('/categories/editCategory/:idCategoria', roleMiddleware, productsController.modifyCategory);
 
 
 /* Baja de categoriass */
-router.get('/categories/deleteCategory/:idCategoria', productsController.confirmDeleteCategory);
-router.delete('/categories/deleteCategory/:idCategoria', productsController.deleteCategory);
+router.get('/categories/deleteCategory/:idCategoria', roleMiddleware, productsController.confirmDeleteCategory);
+router.delete('/categories/deleteCategory/:idCategoria', roleMiddleware, productsController.deleteCategory);
 
 
 /* Listado de Colores de productos */
 router.get('/colors', productsController.colors);
 
 /* Alta de Colores de productos */
-router.get('/colors/newColor', productsController.newColor);
-router.post('/colors/newColor', productsController.createColor);
+router.get('/colors/newColor', roleMiddleware, productsController.newColor);
+router.post('/colors/newColor', roleMiddleware, productsController.createColor);
 
 
 /* Modificacion de colores de productos */
-router.get('/colors/editColor/:idColor', productsController.editColor);
-router.put('/colors/editColor/:idColor', productsController.modifyColor);
+router.get('/colors/editColor/:idColor', roleMiddleware, productsController.editColor);
+router.put('/colors/editColor/:idColor', roleMiddleware, productsController.modifyColor);
 
 
 /* Baja de colores */
-router.get('/colors/deleteColor/:idColor', productsController.confirmDeleteColor);
-router.delete('/colors/deleteColor/:idColor', productsController.deleteColor);
+router.get('/colors/deleteColor/:idColor', roleMiddleware, productsController.confirmDeleteColor);
+router.delete('/colors/deleteColor/:idColor', roleMiddleware, productsController.deleteColor);
 
 
 module.exports = router;

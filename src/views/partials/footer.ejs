@@ -11,15 +11,19 @@
                         <ul class="nav flex-column">
                             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="/products">Productos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/users">Usuarios</a></li>
+                            <% if(typeof locals.esAdmin != 'undefined' && locals.esAdmin == 1){ %> 
+                                
+                                <li class="nav-item"><a class="nav-link" href="/users">Usuarios</a></li>
+                            
+                            <% } %>
                         </ul>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 contactanos">
                         <p class="titulosfooter">Contactanos</p>
                         <ul class="infoContacto" type="none">
-                            <li><a href="tel:+5491148274381"><i class="fas fa-phone-square-alt"></i> 011 4827-4381</a></li>
-                            <li><a href="mailto:pedidoslabuhardilla@gmail.com"><i class="fas fa-envelope"></i> pedidoslabuhardilla@gmail.com</a></li>
-                            <li><a href="https://goo.gl/maps/RK9HWV5PYEoHTBmH7"><i class="fas fa-map-marked-alt"></i> Juncal 2750 - CABA</a></li>
+                            <li><a href="tel:+5491148274381">011 4827-4381</a></li>
+                            <li><a href="mailto:pedidoslabuhardilla@gmail.com">pedidoslabuhardilla@gmail.com</a></li>
+                            <li><a href="https://goo.gl/maps/RK9HWV5PYEoHTBmH7">Juncal 2750 - CABA</a></li>
                         </ul>
                     </div>
                     <div class="col-12 col-md-12 col-lg-4 redes">
@@ -30,11 +34,7 @@
                             <a href="https://www.pinterest.es/labuhardilladec/"><i class="fab fa-pinterest-square"></i></a>
                             <a href="https://api.whatsapp.com/send?phone=1561575112&text=mensaje"><i class="fab fa-whatsapp-square"></i></a>
                         </div>
-                        <div class="row news">
-                            <p>Newsletter</p>
-                            <input  type="email" name="email" placeholder="email@email.com">
-                            <input class="btn btn-light btn-sm" type="submit" value="Enviar">
-                        </div>
+                        
                     </div>
                 </div>
             </footer>

@@ -28,9 +28,7 @@ const usersController =
          return res.render('users/users', {usuario: response});
         })
     },
-    carrito: function(req,res){
-        res.render('users/carrito');
-    },
+   
     detailUser: function(req, res){
         db.User.findByPk(req.params.idUsuario, {include: [{association: 'rolDelUsuario'}]})
         .then(function(response){
@@ -60,11 +58,14 @@ const usersController =
                         if(usuarios[i].email == req.body.email && bcrypt.compareSync(req.body.loginPassword, usuarios[i].password)) {                   
                             req.session.logueado = {
                                 email: usuarios[i].email,
-                                id_role: usuarios[i].id_role,
+                                role: usuarios[i].id_role,
+                                name: usuarios[i].name,
+                                id : usuarios[i].id 
                             }
                             
+                            
                             if(req.body.remember){
-                                res.cookie('userCookie', usuarios[i].email , { maxAge: 1000 * 60 * 24 })
+                                res.cookie('userCookie', usuarios[i].email , { maxAge: 1000 * 60 * 24 })                                ;
                             }
                             
                             return res.redirect('/');
@@ -98,7 +99,7 @@ const usersController =
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
                     image: imagenUsuario,
-                    id_role: 1
+                    id_role: 2
                     //phone: ,
                     //address: ,
                     //id_city: 1
@@ -122,8 +123,15 @@ const usersController =
             res.render('users/userOK');
         },
         profile: function(req, res){
-            res.render('users/profile');
+
+            db.User.findByPk(req.session.logueado.id)
+            .then(function(response) {
+                return res.render('users/profile', {
+                usuario: response
+                })
+            })
         },
+        
         logOut: function(req, res){
             req.session.destroy();
             res.cookie('userCookie','', {maxAge: -1})

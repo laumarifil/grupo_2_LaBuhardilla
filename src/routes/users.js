@@ -5,14 +5,12 @@ const usersController = require('../controllers/usersController');
 const registerValidation = require('../validations/registerValidation');
 const authMiddleware = require('../middlewares/authMiddleware');
 const verifyLoginMiddleware = require('../middlewares/verifyLogin');
+const roleMiddleware = require('../middlewares/roleMiddleware');
 const usersMulterMiddleware = require('../middlewares/usersMulterMiddleware');
 
 
 /* Listado de usuarios */
-router.get('/', authMiddleware , usersController.listar);
-
-/* Carrito de compras */
-router.get('/carrito', authMiddleware , usersController.carrito);
+router.get('/', roleMiddleware, usersController.listar);
 
 /* Alta de usuarios */
 router.get('/registration', verifyLoginMiddleware, usersController.registration);
@@ -29,8 +27,8 @@ router.get('/profile', authMiddleware , usersController.profile);
 router.get('/profile/:idUsuario', usersController.detailUser)
 
 /* Edicion de usuarios */
-router.get('/editUser/:idUsuario', usersController.editUser);
-router.put('/editUser/:idUsuario',usersMulterMiddleware.any(), usersController.modifyUser);
+router.get('/editUser/:idUsuario', roleMiddleware ,usersController.editUser);
+router.put('/editUser/:idUsuario', roleMiddleware, usersMulterMiddleware.any(), usersController.modifyUser);
 
 
 
