@@ -161,14 +161,14 @@ const productsController =
             res.redirect('/products/categories')
         })
     },
-    productsDeco: function(req,res){
+    productsByCategory: function(req,res){
         db.Product.findAll({
             where: {
-                id_category: 1
+                id_category: req.params.idCategoria
             }
         })
          .then(function(response){
-            return res.render('products/productsDeco', {producto: response});           
+            return res.render('products/products', {producto: response });           
          })
     },
  

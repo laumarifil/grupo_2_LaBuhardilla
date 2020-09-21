@@ -36,7 +36,11 @@ module.exports = {
             })
             
         }
-
-        return res.json(req.session.cart.length);
+        let items = 0; 
+        for(let i = 0;i< req.session.cart.length ; i++) {
+            items = items + req.session.cart[i].cantidad
+            }
+            req.session.items  = items ;
+        return res.json(items);
     }
 }   

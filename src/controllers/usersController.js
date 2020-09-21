@@ -32,7 +32,7 @@ const usersController =
     detailUser: function(req, res){
         db.User.findByPk(req.params.idUsuario, {include: [{association: 'rolDelUsuario'}]})
         .then(function(response){
-            res.render('users/detailUser', {usuario: response})
+            res.render('users/profile', {usuario: response})
         })
         .catch(function(error){
             res.send(error)
@@ -42,7 +42,9 @@ const usersController =
         res.render('users/registration');
     },
     login: function(req, res){
+        
         res.render('users/login');
+        
     },
     processLogin: function(req, res){
         
