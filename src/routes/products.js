@@ -14,9 +14,6 @@ const productsMulterMiddleware = require('../middlewares/productsMulterMiddlewar
 router.get('/', productsController.products);
 router.get('/detailProduct/:idProducto', productsController.detailProduct);
 
-/* Productos de Categoría Deco */
-router.get('/productsDeco', productsController.productsDeco);
-
 
 /* Busqueda de productos */
 router.post('/searchProduct/', productsController.searchProduct);
@@ -69,6 +66,10 @@ router.put('/colors/editColor/:idColor', roleMiddleware, productsController.modi
 /* Baja de colores */
 router.get('/colors/deleteColor/:idColor', roleMiddleware, productsController.confirmDeleteColor);
 router.delete('/colors/deleteColor/:idColor', roleMiddleware, productsController.deleteColor);
+
+
+/* Productos de Categoría Deco */
+router.get('/:idCategoria', productsController.productsByCategory);
 
 
 module.exports = router;

@@ -15,7 +15,7 @@
     <div class="row productos">
       
       <div class="col-12" style='margin-bottom: 10px;'>
-        <h4> Listado de productos</h4>
+        <h4> Todos los productos</h4>
         
         <% if(typeof locals.esAdmin != 'undefined' && locals.esAdmin == 1){ %> 
           
@@ -35,15 +35,15 @@
       
       <% for(let i = 0; i < producto.length; i++){ %>
         <a href="/products/detailProduct/<%= producto[i].id %>">
-        <div class="card col-3 border-light" style="width: 18em">
-          <img src="images/products/<%= producto[i].image %>" class="card-img-top" alt="">
+        <div class="card col-12 col-md-6 col-lg-3 border-light" style="width: 18em">
+          <img src="/images/products/<%= producto[i].image %>" class="card-img-top" alt="">
           <div class="card-body">
             <h6 class="card-title" style="color:black;font-size: 16px;"><%= producto[i].name %></h6>
             <p style="color:black;font-size: 20px;">$ <%= producto[i].price %></p>            
             <a></a>
             <form id='carrito'>
               <input type="hidden" value="<%= producto[i].id %>" id="" name="id_producto">
-              <button class="btn btn-success" style="font-size: 15px;" type="submit">+ Agregar al carrito</button>
+              <button class="btn btn-success" type="submit">+ Agregar al carrito</button>
             </form>           
           </div>
         </div>

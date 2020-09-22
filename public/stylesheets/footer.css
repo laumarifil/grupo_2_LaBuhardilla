@@ -6,7 +6,11 @@
 .iconos {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+}
+.iconos a {
+    margin: 3%;
+    color : var(--color-verde-claro)
 }
 
 .titulosfooter {
@@ -27,6 +31,11 @@ ul li a {
     margin-top: -1em;
     margin-bottom: 0em;
     color: var(--color-verde-claro);
+}
+footer ul {
+    text-align: center;
+    justify-content: center;
+    padding: 0%;
 }
 
 footer img {

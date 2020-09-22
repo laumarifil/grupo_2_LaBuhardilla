@@ -20,16 +20,10 @@
                 </section>
             
                 <form method="GET" action="" class="col-12 col-md-6 datosPrincipales">
-                    <h1><%= producto.name %></h1>
+                    <h5><%= producto.name %></h5>
                     <h2 class="precio">$ <%= producto.price %></h2>
-                    <div >
-                        <img class="mediosPago img-fluid" src="/images/FormasPago.jpg">
-                    </div>
-                    <div class="envio">
-                        <label for="codigoPostal">Codigo Postal:</label>
-                        <input class="col-2" type="text">
-                        <button class="btn btn-success" type="button">Calcular envio</button>
-                    </div>
+                    
+                    
                     <div class="cant">
                         <label for="stock">Cantidad:</label>
                         <input class="col-2" type="number" min="1" value="1" max="<%= producto.stock %>" name="stock">
@@ -43,7 +37,10 @@
                         <label><%= producto.colorDelProducto.name %></label>
                     </div>
                     <div class="botones">
-                        <button class="btn btn-success" type="button">Agregar al carrito</button>
+                        <button class="btn btn-success" type="button">+ Agregar al carrito</button>
+                    </div>
+                    <div >
+                        <img class="mediosPago img-fluid" src="/images/FormasPago.jpg">
                     </div>
                 </form>
 
@@ -51,14 +48,21 @@
 
             <div class="row fila2">
 
-                <section class="col-12 col-md-6 especificaciones">
-                    <h5><%= producto.description %></h5>
-                    <a href="/products/editProduct/<%= producto.id %>">Editar Producto</a>
-                    <br>
-                    <a href="/products/deleteProduct/<%= producto.id %>">Eliminar Producto</a>
-                    <br>
-                    <a href="/products">Ir a la lista de productos</a>
-                </section>
+                
+          
+                    <section class="col-12 col-md-6 especificaciones">
+                        <h5><%= producto.description %></h5>
+                        <% if(typeof locals.esAdmin != 'undefined' && locals.esAdmin == 1){ %>
+                        <a href="/products/editProduct/<%= producto.id %>">Editar Producto</a>
+                        <br>
+                        <a href="/products/deleteProduct/<%= producto.id %>">Eliminar Producto</a>
+                        <br>
+                        <a href="/products">Ir a la lista de productos</a>
+                        <% } %> 
+                    </section>
+          
+                  
+                
 
                 <section class="col-12 col-md-6 tambien">
                     <h4>Tambien podria interesarte</h4>

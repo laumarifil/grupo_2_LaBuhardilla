@@ -12,7 +12,7 @@
     <%- include("partials/header")%>    
     
     <div class="container">
-        <h1 class="my-5">Tu carrito</h1>
+        <h4 class="my-5">Tu carrito</h4>
         <div class="table-responsive">
             <% if( productosCarrito.length < 1 ){ %>
                 <h5>Su carrito está vacío.</h5>
@@ -20,11 +20,11 @@
 
             <table class="table">
                 <tr>
-                    <th>Imagen</th>
-                    <th>Producto</th>
+                    <th></th>
+                    <th>Detalle</th>
                     <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Borrar</th>
+                    <th>$</th>
+                    <th></th>
                 </tr>
                     <% productosCarrito.forEach(producto => { %>
                         <tr>
@@ -32,7 +32,7 @@
                                 <img style="width: 80px; display: inline-block" src="/images/products/<%=producto.image%>" alt="">
                             </td>
                             <td>
-                                <h4><%=producto.name %></h4>
+                                <p><%=producto.name %></p>
                                
                             </td>
                             <td>
@@ -52,7 +52,20 @@
                     
             </table>
             <% } %>
-          </div>
+
+            <p class="productsCart"> Productos : ( <%= locals.cartNumber %> ) </p>
+            <div class="comprar">
+                
+                <a class="btn btn-success" href="/products" role="button">Seguir navegando</a>
+
+                <a class="btn btn-success" href="/users/compra" role="button">Comprar</a>
+                
+            </div>
+            
+            
+          
+          </div> 
+          
     </div>
     
     
