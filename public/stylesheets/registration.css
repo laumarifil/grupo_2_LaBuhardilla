@@ -9,7 +9,7 @@
    
   .login-container{
     display: flex;
-    width: 650px;
+    width: 450px;
     height: auto;
     background: #fff;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
@@ -33,7 +33,7 @@
     width: 100%;
     padding: 5px;
     font-size: 16px;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     border-top-style: none;
     border-left-style: none;
     border-right-style: none;
@@ -46,8 +46,9 @@
     outline: none;
   }
    
-  .register .submit{
-    width: auto;
+  .register .submit {
+    width: -webkit-fill-available;
+    text-align: center;
     padding: 10px;
     background: #f17108;
     color: #fff;
@@ -118,9 +119,23 @@
 .password-icon {
     float: right;
     position: relative;
-    margin: -53px 10px 0 0;
+    margin: -40px 10px 0 0;
     cursor: pointer;
 }
+
+.form-check-input {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: -70px;
+}
+
+.form-check-label {
+  margin-bottom: 0px;
+  margin-left: 0px;
+  color: rgba(0, 0, 0, .2);
+  font-size: 20px;
+}
+
   
    
   @media only screen and (max-width: 540px){

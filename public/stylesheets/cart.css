@@ -1,0 +1,17 @@
+.productsCart {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+div .comprar {
+    float: right;
+    padding: 10px;
+}
+.btn-success {
+    font-size: 15px;
+}
+
+.mb-5, .my-5 {
+    margin: 1rem!important;
+}

@@ -30,6 +30,9 @@ router.get('/profile/:idUsuario', usersController.detailUser)
 router.get('/editUser/:idUsuario', roleMiddleware ,usersController.editUser);
 router.put('/editUser/:idUsuario', roleMiddleware, usersMulterMiddleware.any(), usersController.modifyUser);
 
+/* Renderiza vista de compra realizada*/
+router.get('/compra', authMiddleware, usersController.buy);
+
 
 
 module.exports = router;

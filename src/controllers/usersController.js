@@ -167,6 +167,9 @@ const usersController =
             .catch(function(error){
                 res.send(error)
             })
+        },
+        buy: function(req, res) {
+            res.render('users/compra')
         }
     }
     
