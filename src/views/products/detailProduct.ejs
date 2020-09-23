@@ -37,7 +37,10 @@
                         <label><%= producto.colorDelProducto.name %></label>
                     </div>
                     <div class="botones">
-                        <button class="btn btn-success" type="button">+ Agregar al carrito</button>
+                        <form id='carrito'>
+                            <input type="hidden" value="<%= producto[i].id %>" id="" name="id_producto">
+                            <button class="btn btn-success" type="submit">+ Agregar al carrito</button>
+                          </form> 
                     </div>
                     <div >
                         <img class="mediosPago img-fluid" src="/images/FormasPago.jpg">

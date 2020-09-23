@@ -42,9 +42,9 @@
                                 $ <%=producto.price %>
                             </td>
                             <td>
-                                <form action="">
-                                    <input type="hidden" value="" name="" id="">
-                                    <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                <form action="/cart" method="POST">
+                                    <input type="hidden" value="<%= producto.id %>" name="idProducto" id="">
+                                    <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -55,7 +55,18 @@
 
             <p class="productsCart"> Productos : ( <%= locals.cartNumber %> ) </p>
             <div class="comprar">
-                
+            
+
+                <form action="/users/compra" method="POST">
+                    <input type="hidden" value="<%= locals.id %>" name="idUsuario">
+                    <select name="id_payment" class="form-input">
+                        <% for(let i = 0; i < mediosPago.length; i++){ %>
+                            <option value="<%= mediosPago[i].id %>"> <%= mediosPago[i].name %> </option> 
+                        <% } %>
+                    </select>
+                    <button class="btn btn-success" type="submit">Comprar</button>
+                </form>
+
                 <a class="btn btn-success" href="/products" role="button">Seguir navegando</a>
                 
                 <form id='botonComprar' method="get" action="/users/compra">

@@ -1,15 +1,16 @@
 const db = require('../database/models');
 
 module.exports = {
-    get: function(req, res) {   
-
-        
+    get: function(req, res) {
 
         if(typeof req.session.cart == 'undefined') {
             req.session.cart = []
         }
 
-        res.render('cart', { productosCarrito: req.session.cart});
+        db.Payment.findAll()
+        .then(function(response){
+            res.render('cart', { productosCarrito: req.session.cart, mediosPago: response});
+        })
 
        },
     add: async function(req, res) {
@@ -42,5 +43,19 @@ module.exports = {
             }
             req.session.items  = items ;
         return res.json(items);
-    }
+    },
+    delete: function(req,res){
+
+        for (let i = 0; i < req.session.cart.length; i++){
+            if (req.session.cart[i].id == req.body.idProducto){
+                req.session.cart.splice(i, 1);
+            }
+        }
+
+        db.Payment.findAll()
+        .then(function(response){
+            res.render('cart', { productosCarrito: req.session.cart, mediosPago: response });
+        })
+    },
+    
 }   
