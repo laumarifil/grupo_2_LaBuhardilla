@@ -9,31 +9,31 @@
 }
 
 .buy-now-button {
-  background-color: var(--light-blue);
-  font-size: 1.6em;
+  
+  font-size: 1em;
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 15px;
-  background-color:blue;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background-color:var(--color-verde-claro);
+  border: #077a21;
 }
 
 .form-label {
   display: inline-block;
-  font-size: 1.6em;
+  font-size: 1em;
   margin: 10px 0;
 }
 
 .form-input {
   display: block;
-  width: 100%;
-  height: 45px;
+  width: 75%;
+  height: 30px;
   margin-bottom: 15px;
-  font-size: 1.5em;
+  font-size: 1em;
   border-radius: 8px;
   border: none;
   border: solid 1px var(--gray);
@@ -45,13 +45,17 @@
 }
 
 textarea.form-input { 
-  min-height: 140px;
+  min-height: 100px;
   resize: vertical;
   padding: 15px;
-  width: -webkit-fill-available;
+  width: 75%;
 }
 
 .products-wrapper label {
   margin-left: 15px;
+}
+
+#linkCat a{
+  color: var(--color-verde-claro);
 }
 

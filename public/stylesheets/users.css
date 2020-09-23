@@ -8,3 +8,9 @@
 .imgUserContainer{
     width: 100%;
 }
+
+#botonesLogin {
+    background-color:var(--color-verde-claro);
+    border: #077a21;
+    border-radius: 10px;
+}

@@ -127,7 +127,7 @@
     height: 34px;
     background: none;
     border: 0;
-    color: rgba(252, 158, 89, 0.5);
+    color: grey;
   }
   header form input[type='text']:focus {
     outline: none;
@@ -173,4 +173,5 @@
   padding-top: 10vh;
 }
 
-::-webkit-input-placeholder { color:  rgba(253, 197, 155, 0.9); } 
+::-webkit-input-placeholder { color:  rgba(117, 92, 72, 0.9); } 
+  

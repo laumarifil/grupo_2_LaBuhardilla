@@ -21,3 +21,21 @@
 .producto{
     text-align: center;
 }
+
+#editarColor .submit{
+    background-color:var(--color-verde-claro);
+    border: #077a21;
+}
+#nuevoColor .submit{
+    background-color:var(--color-verde-claro);
+    border: #077a21;
+}
+
+#editarCategoria .submit{
+    background-color:var(--color-verde-claro);
+    border: #077a21;
+}
+#nuevaCategoria .submit{
+    background-color:var(--color-verde-claro);
+    border: #077a21;
+}

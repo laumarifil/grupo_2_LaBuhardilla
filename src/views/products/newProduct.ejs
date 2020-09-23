@@ -25,7 +25,7 @@
                                 <label for="price" class="form-label">Precio del producto:</label>
                                 <input type="text" id="price" name="price" class="form-input">
                             </div>
-                            <div class="col-12 col-md-6">
+                            <div id='linkCat' class="col-12 col-md-6">
                                 <label for="category" class="form-label">Categoría:</label>
                                 <select name="category" id="category" class="form-input">
                                     <% for(let i = 0; i < categoria.length; i++){ %>
@@ -34,7 +34,7 @@
                                 </select>
                                 <a href="/products/categories/newCategory">Nueva categoria</a>
                             </div>
-                            <div class="col-12 col-md-6">
+                            <div id='linkCat' class="col-12 col-md-6">
                                 <label for="color" class="form-label">Color:</label>
                                 <select name="color" id="color" class="form-input">
                                     <% for(let i = 0; i < color.length; i++){ %>

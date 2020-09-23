@@ -17,13 +17,13 @@
             <h4 class="col-12">Listado de Categorias</h4>
             
             <% for(let i = 0; i < categorias.length; i++){ %>
-                <div class="card" style="width: 18rem;">
+                
                     <ul class="list-group-flush">
                         <li class="list-group"><%= categorias[i].name %>
                             
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 
-                                <a href="/products/categories/editCategory/<%= categorias[i].id %>"><button type="button" style='margin-left: 150px; margin-bottom: 9px;' class="btn btn-primary btn-sm">modificar</button></a>
+                                <a href="/products/categories/editCategory/<%= categorias[i].id %>"><button type="button" style='margin-left: 150px; margin-bottom: 9px;' class="btn btn-sm btn-success">Modificar</button></a>
                                 
                                 <a href="/products/categories/deleteCategory/<%= categorias[i].id %>"><button type="button" class="btn btn-sm btn-success">Eliminar</button></a>
                                 
@@ -31,8 +31,7 @@
                             
                         </li>  
                     </ul>
-                    
-                </div>
+                
                 
                 <% } %>
                 
