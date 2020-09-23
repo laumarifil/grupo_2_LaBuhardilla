@@ -20,8 +20,22 @@
         <div class="card-body">
           <h5 class="card-title"><%= usuario.name + usuario.surname %></h5>
           <p class="card-text"><%= usuario.email %></p>
-          <a href="/" class="btn btn-success">Modificar datos</a>
+          <a href="/users/editUser/<%= usuario.id %>" class="btn btn-success">Modificar datos</a>
         </div>
+        <a href="/users/changePassword/<%= usuario.id %>" class="btn btn-success">Cambiar contrasena</a>
+      </div>
+
+      <div>
+        <h3>Historial de compras</h3>
+        <% for (let i = 0; i < carrito.length; i++){ %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= carrito[i].purchase_date %></h5>
+            <p class="card-text"><%= carrito[i].total %></p>
+          </div>
+        </div>
+        <% } %>
+
       </div>
 
       <a href="javascript:history.back()"><button class="btn btn-success" style="font-size: 15px; margin-bottom: 5px; margin-top: 5px;">Volver atrás</button></a>

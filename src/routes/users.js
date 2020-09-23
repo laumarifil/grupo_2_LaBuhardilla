@@ -3,6 +3,7 @@ var router = express.Router();
 
 const usersController = require('../controllers/usersController');
 const registerValidation = require('../validations/registerValidation');
+const changePasswordValidation = require('../validations/changePasswordValidation');
 const authMiddleware = require('../middlewares/authMiddleware');
 const verifyLoginMiddleware = require('../middlewares/verifyLogin');
 const roleMiddleware = require('../middlewares/roleMiddleware');
@@ -26,12 +27,19 @@ router.get('/logout', usersController.logOut);
 router.get('/profile', authMiddleware , usersController.profile);
 router.get('/profile/:idUsuario', usersController.detailUser)
 
+/* Perfil de usuarios */
+router.get('/changePassword/:idUsuario', authMiddleware, usersController.changePassword)
+router.put('/changePassword/:idUsuario', authMiddleware, changePasswordValidation, usersController.modifyPassword);
+
 /* Edicion de usuarios */
-router.get('/editUser/:idUsuario', roleMiddleware ,usersController.editUser);
-router.put('/editUser/:idUsuario', roleMiddleware, usersMulterMiddleware.any(), usersController.modifyUser);
+router.get('/editUser/:idUsuario', authMiddleware, usersController.editUser);
+router.put('/editUser/:idUsuario', authMiddleware, usersMulterMiddleware.any(), usersController.modifyUser);
 
 /* Renderiza vista de compra realizada*/
 router.get('/compra', authMiddleware, usersController.buy);
+router.post('/compra', usersController.createBuy);
+
+
 
 
 

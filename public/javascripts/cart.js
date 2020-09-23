@@ -25,7 +25,7 @@ window.addEventListener('load', () =>{
                 .then(response => response.json())
                 .then(data => {
                     cart.innerText = data;
-                    Swal.fire('producto agregado al carrito')
+                    Swal.fire('Producto agregado al carrito')
             });
 
         })

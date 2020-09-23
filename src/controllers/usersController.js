@@ -7,17 +7,7 @@ let usuarios;
 let imagenUsuario;
 
 const db = require('../database/models');
-const operator = db.Sequelize.Op;
-
-let ultimoID = function(array) {
-    let contador = array[0].id;
-    for(let i = 0; i < array.length; i++) {
-        if(array[i].id > contador) {
-            contador = array[i].id;
-        }
-    }
-    return contador;
-}
+const operator = db.Sequelize;
 
 const usersController =
 {
@@ -53,7 +43,7 @@ const usersController =
         db.User.findAll()
             .then(function(usuarios){
 
-                if(errors.isEmpty()){         
+                if(errors.isEmpty()){
             
                     for(let i = 0 ; i<usuarios.length; i++){
 
@@ -126,12 +116,11 @@ const usersController =
         },
         profile: function(req, res){
 
-            db.User.findByPk(req.session.logueado.id)
-            .then(function(response) {
-                return res.render('users/profile', {
-                usuario: response
-                })
+            Promise.all([db.User.findByPk(req.session.logueado.id),db.Cart.findAll( {where: { id_user: req.session.logueado.id } })])
+            .then(function(response){
+                return res.render('users/profile', { usuario: response[0], carrito: response[1] })
             })
+
         },
         
         logOut: function(req, res){
@@ -169,7 +158,64 @@ const usersController =
             })
         },
         buy: function(req, res) {
+
+            req.session.cart = [];
             res.render('users/compra')
+        },
+        createBuy: function(req, res){
+            let total = 0;
+            for(let i = 0; i < req.session.cart.length; i++){
+                total = total + (req.session.cart[i].cantidad * req.session.cart[i].price);
+            }
+            db.Cart.create({
+                purchase_date: '10/10/2020',
+                id_user: req.session.logueado.id,
+                id_payment: req.body.id_payment,
+                total: total,
+            })
+            .then(function(response){
+                return res.redirect('/users/compra')
+            })
+            .catch(function(error){
+                res.send(error)
+            })
+        },
+        changePassword: function(req,res){
+            db.User.findByPk(req.params.idUsuario)
+            .then(function(response){
+                res.render('users/changePassword', { usuario: response });
+            })            
+        },
+        modifyPassword: function(req,res){
+
+            let errors = validationResult(req);
+
+            if(errors.isEmpty()) {
+
+                db.User.findByPk(req.params.idUsuario)
+                .then(function(response){
+
+                    if(bcrypt.compareSync(req.body.oldpassword, response.password)) {
+                
+                        db.User.update(
+                            {
+                                password: bcrypt.hashSync(req.body.newpassword, 10)
+                            },
+                            {
+                                where:{
+                                    id: req.params.idUsuario
+                                }
+                            })
+                        .then(function(response){
+                            return res.render('home')
+                        })
+                        .catch(function(error){
+                            res.send(error)
+                        })
+                    }
+                })
+
+            } 
         }
     }
     
