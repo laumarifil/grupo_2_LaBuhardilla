@@ -4,7 +4,8 @@ function session(req, res, next){
         
         res.locals.session = {
             name : req.session.logueado.name,
-            id : req.session.logueado.id     
+            id : req.session.logueado.id,
+            email : req.session.logueado.email     
         };
     
     }

@@ -10,6 +10,8 @@ div .comprar {
 }
 .btn-success {
     font-size: 15px;
+    background-color:var(--color-verde-claro);
+    border: #077a21;
 }
 
 .mb-5, .my-5 {
