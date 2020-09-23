@@ -23,6 +23,8 @@
   /* ==================
   - HEADER
   ================== */
+
+ 
   
   header {
     background-color: var(--color-crudo);
@@ -36,6 +38,7 @@
   
  header a {
     color: var(--color-verde-claro);
+    font-family: 'Open Sans Condensed', sans-serif;
   }
   
   /* ==================
@@ -113,9 +116,10 @@
   /* Barra de búsqueda */
   header .busqueda {
     height: 40px;
-    border: 1px solid  rgba(250, 203, 169, 0.5);
+    width: 300px;
+    border: 3px solid  rgba(250, 203, 169, 0.5);
     background-color: white;
-    border-radius: auto;
+    border-radius: 10px;
     padding: 0 8px;
     align-self: center;
   }
@@ -154,3 +158,19 @@
  .carousel-inner{
   height:80vh;
 }
+
+#categoryCards a {
+  
+  background-color:var(--color-verde-claro);
+  border: #077a21;
+  margin-left: 25%;
+  
+}
+#categoryCards{
+  justify-content: space-evenly;
+  align-items: center;
+  padding-left: 30vh;
+  padding-top: 10vh;
+}
+
+::-webkit-input-placeholder { color:  rgba(253, 197, 155, 0.9); } 

@@ -1,3 +1,24 @@
+.container {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+form, h5, h2, h4, h6, p {
+    
+    color: var(--color-verde-oscuro);
+    
+}
+form h5 {
+    font-weight: bold;
+   
+}
+
+
+.container h2 {
+    font-size: x-large;
+}
+.container label {
+    font-size: small;
+}
+
 .especificaciones
 {
     text-align: center;
@@ -6,7 +27,7 @@
 
 .datosPrincipales{
     text-align: center;
-    height: 80vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -18,16 +39,18 @@
 }
 
 .fila1{
-    height: 80vh;
+    height: 70vh;
     padding-bottom: 1%;
 }
 
 .fila2{
-    padding-top: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 .mediosPago{
-    max-width: 60%;
+    max-width: 40%;
+    align-items: flex-end;
 }
 
 .precio{
@@ -35,8 +58,8 @@
 }
 
 .imagenPrincipal{
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
     max-width: 50vw;
     max-height: 80vh;
 }
@@ -67,6 +90,16 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: stretch;
+}
+
+section h4 {
+        color: var(--color-verde-oscuro);
+}
+section h5 {
+    color: #13b738;
+}
+section h6 {
+    color: var(--color-verde-oscuro);
 }
 
 .tambien
